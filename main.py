@@ -3674,6 +3674,7 @@
 
 import re
 
+
 # s = "Я ищу совпадения в 2023 году. И я их найду в 2 счёта. 9875 19_4 5"
 # # reg = r'\A\w\s\w+\s\w+'  # w - Я
 # # reg = r'\w\s\w\Z'
@@ -3881,6 +3882,115 @@ import re
 # print(re.findall(reg, s))
 # print(re.sub(reg, r'\2.\1.\3', s))
 
-s = 'google.com and google.ru and yandex.ru'
-reg = r'(([a-z0-9-]{2,}\.)+[a-z]{2,4})'
-print(re.sub(reg, r'http://\1', s))
+# s = 'google.com and google.ru and yandex.ru'
+# reg = r'(([a-z0-9-]{2,}\.)+[a-z]{2,4})'
+# print(re.sub(reg, r'http://\1', s))
+
+# 24.11.2022 =============================================================================================
+
+# Рекурсия --------
+
+# def elevator(n):
+#     if n == 0:
+#         print('Вы в подвале')
+#         return
+#     print('=>', n)
+#     elevator(n - 1)  # 5 4 3 2 1
+#     print(n, end=' ')  # 1 2 3 4 5
+#
+#
+# n1 = int(input('На каком Вы этаже: '))  # 5
+# elevator(n1)
+
+# def sum_list(lst):
+#     res = 0
+#     for i in lst:
+#         res = res + i
+#     return res
+#
+#
+# print(sum_list([1, 3, 5, 7, 9]))
+
+
+# def sum_list(lst):
+#     if len(lst) == 1:
+#         print(lst, '=> lst[0]:', lst[0])
+#         return lst[0]  # 9
+#     else:
+#         print(lst, '=> lst[0]:', lst[0])
+#         return lst[0] + sum_list(lst[1:])  # 1 + 3 + 5 + 7
+#
+#
+# print(sum_list([1, 3, 5, 7, 9]))  # 25
+
+# def to_str(n, base):
+#     convert = '0123456789'
+#     if n < base:
+#         return convert[n]
+#     else:
+#         return to_str(n // base, base) + convert[n % base]  # 9 6 7
+#
+#
+# print(to_str(769, 10))  # 769 // 10 = 76 // 10 = 7
+
+
+# def to_str(n, base):
+#     convert = '0123456789ABCDEF'
+#     if n < base:
+#         return convert[n]  # 15 (15)
+#     else:
+#         return to_str(n // base, base) + convert[n % base]  # 15 (f)
+#
+#
+# print(to_str(255, 16))  # 769 // 16 = 15
+
+# names = ['Adam', ["Bob", ["Chet", "Cat"], "Bard", "Bert"], 'Alex', ["Bea", "Bill"], 'Ann']
+# print(type(names[0]) == str)
+# print(type(names[0]) == list)
+# print(names[0])
+# print(isinstance(names[1], list))
+# print(names[1][0])
+# print(isinstance(names[1][1], list))
+# print(names[1][1][0])
+# print(isinstance(names[1][1][0], list))
+
+# names = ['Adam', ["Bob", ["Chet", "Cat"], "Bard", "Bert"], 'Alex', ["Bea", "Bill"], 'Ann']
+#
+#
+# def count(lst):
+#     cnt = 0
+#     for i in lst:
+#         if isinstance(i, list):
+#             cnt += count(i)
+#         else:
+#             cnt += 1
+#     return cnt
+#
+#
+# print(count(names))
+
+# names = ['Adam', ["Bob", ["Chet", "Cat"], "Bard", "Bert"], 'Alex', ["Bea", "Bill"], 'Ann']
+#
+#
+# def union(s):
+#     if not s:  # s == []:
+#         return s
+#     if isinstance(s[0],  list):
+#         return union(s[0]) + union(s[1:])
+#     return s[:1] + union(s[1:])
+#
+#
+# print('Выпрямленый список:', union(names))
+# print(names)
+
+
+def remove(text):
+    if not text:
+        return ''
+    if text[0] == '\t' or text[0] == ' ':
+        return remove(text[1:])
+    else:
+        return text[0] + remove(text[1:])
+
+
+print(remove("  Hello\tWorld   "))
