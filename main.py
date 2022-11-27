@@ -3984,13 +3984,13 @@ import re
 # print(names)
 
 
-def remove(text):
-    if not text:
-        return ''
-    if text[0] == '\t' or text[0] == ' ':
-        return remove(text[1:])
-    else:
-        return text[0] + remove(text[1:])
-
-
-print(remove("  Hello\tWorld   "))
+# def remove(text):
+#     if not text:
+#         return ''
+#     if text[0] == '\t' or text[0] == ' ':
+#         return remove(text[1:])
+#     else:
+#         return text[0] + remove(text[1:])
+#
+#
+# print(remove("  Hello\tWorld   "))
