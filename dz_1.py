@@ -8,6 +8,8 @@
 # # print(eval(f'a + {c} + b'))
 # print(eval(f'a + {c} + b'))
 
-a, b, c = 'Москва', 'Санкт-Петербург', 'Екатеринбург'
-print(min(a, b, c, key=len ))
-print(max(a, b, c, key=len ))
+# a, b, c = 'Москва', 'Санкт-Петербург', 'Екатеринбург'
+# print(min(a, b, c, key=len ))
+# print(max(a, b, c, key=len ))
+
+
