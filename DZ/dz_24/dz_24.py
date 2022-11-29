@@ -11,29 +11,29 @@
 # print(func([-2, 3, 8, -11, -4, 6]))
 
 
-def func(n):
-    if len(n) == 0:  # n == [] подчеркивает , но можно поставить - not n (наведя на подчеркивание)
-        return 0  # len(n)
-    elif n[0] < 0:
-        return 1 + func(n[1:])
-    else:
-        return func(n[1:])
-
-
-print('n =', func([-2, 3, 8, -11, -4, 6]))
-
-
 # def func(n):
-#     if len(n) == 0:
+#     if len(n) == 0:  # n == [] подчеркивает , но можно поставить - not n (наведя на подчеркивание)
 #         return 0  # len(n)
+#     elif n[0] < 0:
+#         return 1 + func(n[1:])
 #     else:
-#         res = func(n[1:])
-#         if n[0] < 0:
-#             res += 1  # return func(n[1:]) + 1 - не работает вместо второстепенной переменной
-#         return res
+#         return func(n[1:])
 #
 #
 # print('n =', func([-2, 3, 8, -11, -4, 6]))
+
+
+def func(n):
+    if len(n) == 0:
+        return 0  # len(n)
+    else:
+        res = func(n[1:])
+        if n[0] < 0:
+            res += 1  # return func(n[1:]) + 1 - не работает вместо второстепенной переменной
+        return res
+
+
+print('n =', func([-2, 3, 8, -11, -4, 6]))
 
 # # Не работает, нет проверки на положительное число
 # def func(n):

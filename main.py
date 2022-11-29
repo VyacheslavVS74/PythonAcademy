@@ -3674,7 +3674,6 @@
 
 import re
 
-
 # s = "Я ищу совпадения в 2023 году. И я их найду в 2 счёта. 9875 19_4 5"
 # # reg = r'\A\w\s\w+\s\w+'  # w - Я
 # # reg = r'\w\s\w\Z'
@@ -3994,3 +3993,128 @@ import re
 #
 #
 # print(remove("  Hello\tWorld   "))
+
+# 29.11.2022 =========================================================================================
+# Файлы-----------
+
+# # f = open('D:\\PythonAcademy\\txt.txt', 'r')
+# f = open('txt.txt', 'r')  # открыть файл
+# # print(f)
+# # print(*f)
+# f.close()  # закрыть файл
+# print(f.closed)
+# print(f.mode)
+# print(f.name)
+# print(f.encoding)
+
+# f = open('txt.txt', 'r')
+# print(f.read(3))
+# print(f.read())
+# f.close()
+
+# f = open('txt.txt', 'r')
+# try:
+#     print(f.read())
+# finally:
+#     f.close()
+
+# f = open('test.txt', 'r')
+# print(f.readline())  # построчно считывает
+# print(f.readline(8))
+# print(f.readline())
+# print(f.readline())
+# f.close()
+
+# f = open('test.txt', 'r')
+# # print(f.readlines())
+# print(f.readlines(15))
+# f.close()
+
+# f = open('test.txt', 'r')
+# for line in f:
+#     print(line)  # line, end='\r'
+# f.close()
+
+# f = open('test.txt', 'r')
+# count = 0
+# for line in f:
+#     count += 1
+# f.close()
+# print(count)
+
+# f = open('test.txt', 'r')
+# print(len(f.readlines()))
+# f.close()
+
+# f = open('xyz.txt', 'w')
+# f.write('hello\nWorld')
+# # f.write('привет\nмир')  # кириллица тоже можно
+# #  # f.write(5)  # будет ошибка
+# f.close()
+
+# f = open('xyz.txt', 'a')
+# f.write('\nновый текст')
+# f.close()
+
+# f = open('xyz.txt', 'a')
+# # print(f.write('\nновый текст'))
+# lines = ['\nЛиния 1', '\nЛиния 2']
+# f.writelines(lines)
+# f.close()
+
+# f = open('xyz.txt', 'w')
+# lst = [str(i) + str(i-1) for i in range(1, 20)]  # str(i) + str(i-1) + '\t'
+# print(lst)
+# # f.writelines(lst)
+# for index in lst:
+#     f.write(index + '\t')
+# f.close()
+# -------------------------------------------------------
+
+# f = open('text2.txt', 'w')
+# f.write('Замена строки в текстовом файле;\nизменить строку в списке;\nзаписать в список файл')
+# f.close()
+#
+# f = open('text2.txt', 'r')
+# read_file = f.readlines()
+# print(read_file)
+# for i in range(len(read_file)):
+#     if read_file[i] == 'изменить строку в списке;\n':
+#         read_file[i] = 'Hello world\n'
+# print(read_file)
+# f.close()
+#
+# f = open('text2.txt', 'w')
+# f.writelines(read_file)
+# f.close()
+
+# f = open('text2.txt', 'w')
+# f.write('Замена строки в текстовом файле;\nизменить строку в списке;\nзаписать в список файл')
+# f.close()
+#
+# f = open('text2.txt', 'r')
+# read_line = f.readlines()
+# print(read_line)
+# n = int(input("Введите индекс: "))
+# if 0 <= n < len(read_line):
+#     read_line.pop(n)
+# else:
+#     print('Такой строки нет')
+# print(read_line)
+# f.close()
+
+# f = open('txt.txt', 'r')
+# print(f.read(3))
+# print(f.tell())
+# print(f.seek(1))
+# print(f.read())
+# print(f.tell())
+# f.close()
+
+# f = open('txt.txt', 'r+')  # файл должен быть уже
+# print(f.write('I am learning Python'))  # 20
+# print(f.seek(3))  # 3
+# print(f.write('--new string--')) # 14
+# print(f.tell()) # 17
+# f.close()
+
