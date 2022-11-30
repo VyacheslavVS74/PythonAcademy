@@ -4102,6 +4102,10 @@ import re
 #     print('Такой строки нет')
 # print(read_line)
 # f.close()
+#
+# f = open('text2.txt', 'w')
+# f.writelines(read_line)
+# f.close()
 
 # f = open('txt.txt', 'r')
 # print(f.read(3))
