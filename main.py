@@ -4122,3 +4122,136 @@ import re
 # print(f.tell()) # 17
 # f.close()
 
+# 04.12.2022 =======================================================================
+
+# with open('text7.txt', 'w+') as f:
+#     print(f.write('0123456789'))
+
+# with open('text2.txt', 'r') as f:
+#     for i in f:
+#         # print(i)
+#         print(i[:6])
+
+# file_name = 'res.txt'
+# lst = [4.5, 2.8, 3.9, 1.0, 0.3, 4.33, 7.77]
+#
+#
+# def get_line(lt):
+#     lt = list(map(str, lt))
+#     return ' '.join(lt)
+#
+#
+# with open(file_name, 'w') as f:
+#     f.write(get_line(lst))
+# # print(get_line(lst))
+
+# file_name = 'res.txt'
+# with open(file_name, 'r') as f:
+#     nums = f.read()
+#
+# print(nums)
+#
+#
+# lst = list(map(float, nums.split(' ')))
+# print(lst)
+# print(len(lst))
+# print(sum(lst))
+
+# def longest_worlds(file):
+#     with open(file, 'r', encoding='utf-8') as text:
+#         w = text.read().split()
+#         # max_length = len(max(w, key=len))
+#         max_length = len(max(w, key=len))
+#         res = [word for word in w if len(word) == max_length]
+#         if len(res) == 1:
+#             return res[0]
+#         return res
+#
+#
+# file_name = 'res.txt'
+# print(longest_worlds(file_name))
+
+# # text = 'строка №1\nстрока №2\nстрока №3\nстрока №4\nстрока №5\nстрока №6\nстрока №7\nстрока
+# #  №8\nстрока №9\nстрока №10\n'
+# #
+# # with open('one.txt', 'w') as f:
+# #     f.write(text)
+# read_file = 'one.txt'
+# write_file = 'two.txt'
+# with open(read_file, 'r') as fr, open(write_file, 'w') as fw:
+#     for line in fr:
+#         line = line.replace('строка', 'Линия - ')
+#         fw.write(line)
+
+# Модуль OS и OS.PATH ------------------------------------------------
+import os
+
+# print('Текущая директория: ', os.getcwd())  # D:\PythonAcademy
+#
+# print(os.listdir())  # возвращает список директорий и файлов, находящихся в текущей директории
+# print(os.listdir('..'))
+
+# os.mkdir('folder')  # создали директорию по указанному пути (папку)
+
+# os.makedirs('nested1/nested2/nested3')  # создает промежуточные директории и конечную, указанную в пути, если они
+# # не существуют. Если конечная директория уже существует, то будет сгенерирована ошибка FileExistsError
+
+# os.remove('xyz.txt')  # удаление файла
+
+# # os.rename('nested1', 'test')  # переименовывает файл или директорию
+# os.rename('test.txt', 'test/test1.txt')  # переименовывает файл или директорию, перемещая файлы в существующие
+# # директории(переместил файл)
+
+# os.renames('text.txt', 'test1/test1.txt')  # переименовывает файл или директорию, создавая промежуточные директории
+# # (переместил файл)
+
+# os.rmdir('test1') # удаляет пустую директорию
+
+# for root, dirs, files in os.walk('test'):
+#     print('root', root)
+
+# for root, dirs, files in os.walk('test', topdown=True):  # возвращает имена объектов в виде дерева директорий.
+# # Для каждой директории возвращает картеж (root - путь к директории, dirs - список директорий, files - список файлов)
+#     print('root', root)
+#     print('   Subdirs', dirs)
+#     print('   files', files)
+
+
+# def remove_empty_dirs(root_tree):
+#     for root, dirs, files in os.walk(root_tree):
+#         if not os.listdir(root):
+#             os.rmdir(root)
+#             print(f'Директория {root} удалена.')
+#
+#
+# remove_empty_dirs('test')
+
+# print(os.path.split(r'D:\PythonAcademy\test\nested2\nested3'))  # разбивает путь на кортеж ( head, tail), -
+# # последний компонет пути, head - все остальное
+
+# print(os.path.split(r'D:\PythonAcademy\test\nested2\nested3\\'))
+
+# print(os.path.split(r'D:\PythonAcademy\test\nested2\nested3')[1])
+# print(os.path.dirname(r'D:\PythonAcademy\test\nested2\nested3'))  # возвращает имя директории (+ путь)
+# print(os.path.basename(r'D:\PythonAcademy\test\nested2\nested3'))  # возвращает имя файла
+
+# print(os.path.join('files', '\pythonProject1', 'dir', 'three.txt'))
+
+# # dirs = ['Work/F1', 'Work/F2/F21']
+# # for d in dirs:
+# #     os.makedirs(d)
+#
+# files = {'Work': ['w.txt'],
+#         'Work/F1': ['F11.txt', 'F12.txt', 'F13.txt'],
+#         'Work/F2/F21': ['F211.txt', 'F211.txt', 'F212.txt']
+#         }
+#
+# for d, file in files.items():
+#     for f in file:
+#         file_path = os.path.join(d, f)
+#         open(file_path, 'w').close()
+#
+# file_text = ['Work/w.txt','Work/F1/F12.txt','Work/F2/F21/F211.txt', 'Work/F2/F21/F212.txt']
+# for file in file_text:
+#     with open(file, 'w') as f:
+#         f.write(f'Текст для файла по пути {file}')
