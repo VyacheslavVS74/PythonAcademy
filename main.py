@@ -4186,6 +4186,7 @@ import re
 # Модуль OS и OS.PATH ------------------------------------------------
 import os
 
+
 # print('Текущая директория: ', os.getcwd())  # D:\PythonAcademy
 #
 # print(os.listdir())  # возвращает список директорий и файлов, находящихся в текущей директории
@@ -4251,7 +4252,179 @@ import os
 #         file_path = os.path.join(d, f)
 #         open(file_path, 'w').close()
 #
-# file_text = ['Work/w.txt','Work/F1/F12.txt','Work/F2/F21/F211.txt', 'Work/F2/F21/F212.txt']
+# file_text = ['Work/w.txt', 'Work/F1/F12.txt','Work/F2/F21/F211.txt', 'Work/F2/F21/F212.txt']
 # for file in file_text:
 #     with open(file, 'w') as f:
 #         f.write(f'Текст для файла по пути {file}')
+
+# 06.12.2022 =========================================================================================
+
+# решение к коду выше _______________
+
+
+# def print_tree(root, td):
+#     print(f'Обход {root} {"сверху вниз" if td else "снизу вверх"}')
+#     for root, dirs, fl in os.walk(root, topdown=td):
+#         print(root)
+#         print(dirs)
+#         print(fl)
+#     print('-' * 50)
+#
+#
+# print_tree('Work', td=False)
+# print_tree('Work', td=True)
+
+# ---------------------------------------
+
+# print(os.path.exists(r'D:\PythonAcademy\Work'))  # проверяет наличие файла или папки по указанному пути
+# print(os.path.getatime(path))  # возвращает время последнего доступа к файлу в секундах
+# print(os.path.getctime(path))  # возвращает время создания файла
+# print(os.path.getmtime(path))  # возвращает время последнего изменения файла
+
+# print(os.path.getsize(path))  # возвращает размер файла в байтах
+
+# import time
+#
+# path = 'two.txt'
+#
+# size = round(os.path.getsize(path) / 1024, 2)
+# print(size)
+# t = os.path.getctime(path)
+# print(time.strftime('%d.%m.%Y, %H:%M:%S', time.localtime(t)))
+
+# print(os.path.isfile(r'Work\w.txt'))  # возвращает True, если путь является файлом
+# print(os.path.isdir(r'Work'))  # возвращает True, если путь является папкой
+
+# Обьектно-ориентированое програмирование --------------------------------------------------
+
+# свойства (поля: переменные)
+
+# class Point:
+#     """Класс для представления координат точек на плоскости"""
+#     x = 1
+#     y = 1
+#
+#
+# # print(Point.__doc__)
+# # print(Point.__name__)
+# # print(dir(Point))
+#
+# p1 = Point()
+# p2 = Point()
+# print('p1 =', p1.x)
+# print('Point =', Point.x)
+# # print(type(p1))
+# p1.x = 100
+# p2.x = 200
+# print('p1 =', p1.x)
+# print('p2 =', p2.x)
+# print('Point =', Point.x)
+# # print(id(p1))
+# # print(id(p2))
+# # print(id(Point))
+# Point.y = 300
+# print('p1 =', p1.y)
+# print('p2 =', p2.y)
+# print('Point =', Point.y)
+
+# class Point:
+#     x = 1
+#     y = 1
+#
+#
+# p1 = Point()
+# p1.x = 5
+# p1.y = 10
+# p1.z = 20
+# print(p1.x, p1.y)
+# print(p1.__dict__)
+# print(Point.__dict__)
+
+# методы (функция)----
+# атрибуты = свойства + методы
+
+# class Point:
+#     x = 1
+#     y = 1
+#
+#     def set_coord(self):
+#         print(self.__dict__)
+#         # print('Метод set_coord')
+#
+#
+# p1 = Point()
+# print(p1.x)
+# p1.x = 5
+# p1.y = 10
+# p1.set_coord()
+# # Point.set_coord(p1)  # редко используется
+# p2 = Point()
+# p2.x = 2
+# p2.y = 7
+# p2.set_coord()
+
+# class Point:
+#     x = 1
+#     y = 1
+#
+#     def set_coord(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#
+# p1 = Point()
+# p1.set_coord(5, 10)
+# print(p1.__dict__)
+# print(p1.x)
+# p2 = Point()
+# p2.set_coord(2, 7)
+# print(p2.__dict__)
+# print(p2.x)
+# Point.set_coord(p2, 5, 10)
+# print(p2.__dict__)
+
+class Human:
+    name = 'name'
+    birthday = '00.00.0000'
+    phone = '00-00-00'
+    country = 'country'
+    city = 'city'
+    address = 'street, house'
+
+    def print_info(self):
+        print(' Персональные данные '.center(40, '*'))
+        print(f'Имя: {self.name}\nДата рождения: {self.birthday}\nНомер телефона: {self.phone}\n'
+              f'Страна: {self.country}\nГород: {self.city}\nДомашний адрес: {self.address}')
+        print('=' * 40)
+
+    def input_info(self, first_name, birthday, phone, country, city, address):
+        self.name = first_name
+        self.birthday = birthday
+        self.phone = phone
+        self.country = country
+        self.city = city
+        self.address = address
+
+    def set_name(self, name):  # установить имя
+        if isinstance(name, str):
+            self.name = name
+
+    def set_birthday(self, bth):
+        self.birthday = bth
+
+    def get_name(self):  # получить имя
+        return self.name
+
+    def get_birthday(self):
+        return self.birthday
+
+
+h1 = Human()
+h1.print_info()
+h1.input_info('Юля', '23.05.1986', "45-46-98", "Россия", "Москва", "Чистопрудный бульвар, 1А")
+h1.print_info()
+h1.set_name('Алевтина')
+h1.print_info()
+print(h1.get_name())
+h1.set_birthday('23.01.1987')
+print(h1.get_birthday())
