@@ -4242,20 +4242,20 @@ import os
 # for d in dirs:
 #     os.makedirs(d)
 
-files = {'Work': ['w.txt'],
-        'Work/F1': ['F11.txt', 'F12.txt', 'F13.txt'],
-        'Work/F2/F21': ['F211.txt', 'F211.txt', 'F212.txt']
-        }
-
-for d, file in files.items():
-    for f in file:
-        file_path = os.path.join(d, f)
-        open(file_path, 'w').close()
-
-file_text = ['Work/w.txt', 'Work/F1/F12.txt','Work/F2/F21/F211.txt', 'Work/F2/F21/F212.txt']
-for file in file_text:
-    with open(file, 'w') as f:
-        f.write(f'Текст для файла по пути {file}')
+# files = {'Work': ['w.txt'],
+#         'Work/F1': ['F11.txt', 'F12.txt', 'F13.txt'],
+#         'Work/F2/F21': ['F211.txt', 'F211.txt', 'F212.txt']
+#         }
+#
+# for d, file in files.items():
+#     for f in file:
+#         file_path = os.path.join(d, f)
+#         open(file_path, 'w').close()
+#
+# file_text = ['Work/w.txt', 'Work/F1/F12.txt','Work/F2/F21/F211.txt', 'Work/F2/F21/F212.txt']
+# for file in file_text:
+#     with open(file, 'w') as f:
+#         f.write(f'Текст для файла по пути {file}')
 
 # 06.12.2022 =========================================================================================
 
@@ -4428,3 +4428,162 @@ for file in file_text:
 #
 # # h1.set_birthday('23.01.1987')
 # print(h1.get_birthday())
+
+# 08.12.2002 ==========================================================================================
+
+# конструктор (__new__)
+# инициализатор (__init__)
+# диструктор (__del__)
+
+# class Person:
+#     skill = 10
+#
+#     def __init__(self, name, surname):
+#         self.surname = surname
+#         self.name = name
+#
+#     def print_info(self):
+#         print('Данные сотрудника: ', self.name, self.surname)
+#
+#     def add_skill(self, k):
+#         self.skill += k
+#         print('Квалификация сотрудника: ', self.skill, '\n')
+#
+#
+# p1 = Person('Viktor', 'Reznik')
+# p1.print_info()
+# p1.add_skill(3)
+#
+# p2 = Person('Anna', 'Dolgih')
+# p2.print_info()
+# p2.add_skill(2)
+
+# class Point:
+#     # def __new__(cls, *args, **kwargs):
+#     #     print('Конструктор')
+#     #     return super().__new__(cls)
+#
+#     def __init__(self, x, y):
+#         print('Инициализатор')
+#         self.x = x
+#         self.y = y
+#
+#     def __del__(self):
+#         print('Удаление экземпляра', self.__class__.__name__)
+#
+#     def print_coord(self):
+#         print(f'x: {self.x}, y: {self.y}')
+#
+#
+# p1 = Point(5, 10)
+# p1.print_coord()
+# print(id(p1))
+#
+# p2 = Point(2, 7)
+# p2.print_coord()
+# print(id(p2))
+
+# свойства:
+#   - статические
+#   - динамические
+
+# class Point:
+#     count = 0
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#         Point.count += 1
+#
+#
+# p1 = Point(5, 10)
+# print(p1.count)
+# p2 = Point(2, 7)
+# print(p2.count)
+# # print('->', Point.count)
+# p3 = Point(3, 4)
+# # print(p3.count)
+#
+# print(id(p1.count))
+# print(id(p2.count))
+# print(id(p3.count))
+# print(id(Point.count))
+
+# class Robot:
+#     count = 0
+#
+#     def __init__(self, name):
+#         self.name = name
+#         print('Инициализация робота: ', self.name)
+#         Robot.count += 1
+#
+#     def __del__(self):
+#         print(f'{self.name}, выключается')
+#         Robot.count -= 1
+#         if Robot.count == 0:
+#             print(self.name, 'был последним')
+#         else:
+#             print('Работающих роботов осталось: ', Robot.count)
+#
+#     def say_hi(self):
+#         print('Приветствую, меня зовут', self.name)
+#
+#
+# droid1 = Robot('R2-D2')
+# droid1.say_hi()
+# print('Численность роботов:', Robot.count)
+#
+# droid2 = Robot('C-3PO')
+# droid2.say_hi()
+# print('Численность роботов:', Robot.count)
+#
+# droid3 = Robot('C-322')
+# droid3.say_hi()
+# print('Численность роботов:', Robot.count)
+#
+# print('\nЗдесь роботы могут проделать какую-то работу\n')
+# print('Роботы закончили свою работу, давайте их выключим')
+# del droid1  # либо droid1 = 0
+# del droid2
+# del droid3
+# print('Работающих роботов осталось: ', Robot.count)
+
+# Модификаторы доступа:
+#   public (self.x) - публичное свойство (открытое)
+#   protected (self._x) - используется при наследовании
+#   private (self.__x) - закрытые свойства
+
+class Point:
+    def __init__(self, x, y):
+        self.__x = self.__y = 0
+        if Point.__check_value(x) and Point.__check_value(y):
+            self.__x = x  # _Point__x
+            self.__y = y
+
+    def __check_value(z):
+        if isinstance(z, int) or isinstance(z, float):
+            return True
+        return False
+
+    def set_coord(self, x, y):
+        if Point.__check_value(x) and Point.__check_value(y):
+            self.__x = x
+            self.__y = y
+        else:
+            print('Координаты должны быть числами')
+
+    def get_cord(self):
+        return self.__x, self.__y
+
+
+p1 = Point('5', 10)
+p1._Point__x = 111
+# print(p1.get_cord())
+# p1.set_coord(1, 2)
+# print(p1.get_cord())
+# print(p1.__dict__)
+
+# p1.__x = 100
+# p1.__y = 'abc'
+# print(p1.__x, p1.__y)
+print(p1.__dict__)
