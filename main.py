@@ -4553,37 +4553,37 @@ import os
 #   protected (self._x) - используется при наследовании
 #   private (self.__x) - закрытые свойства
 
-class Point:
-    def __init__(self, x, y):
-        self.__x = self.__y = 0
-        if Point.__check_value(x) and Point.__check_value(y):
-            self.__x = x  # _Point__x
-            self.__y = y
-
-    def __check_value(z):
-        if isinstance(z, int) or isinstance(z, float):
-            return True
-        return False
-
-    def set_coord(self, x, y):
-        if Point.__check_value(x) and Point.__check_value(y):
-            self.__x = x
-            self.__y = y
-        else:
-            print('Координаты должны быть числами')
-
-    def get_cord(self):
-        return self.__x, self.__y
-
-
-p1 = Point('5', 10)
-p1._Point__x = 111
-# print(p1.get_cord())
-# p1.set_coord(1, 2)
-# print(p1.get_cord())
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = self.__y = 0
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             self.__x = x  # _Point__x
+#             self.__y = y
+#
+#     def __check_value(z):
+#         if isinstance(z, int) or isinstance(z, float):
+#             return True
+#         return False
+#
+#     def set_coord(self, x, y):
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             self.__x = x
+#             self.__y = y
+#         else:
+#             print('Координаты должны быть числами')
+#
+#     def get_cord(self):
+#         return self.__x, self.__y
+#
+#
+# p1 = Point('5', 10)
+# p1._Point__x = 111
+# # print(p1.get_cord())
+# # p1.set_coord(1, 2)
+# # print(p1.get_cord())
+# # print(p1.__dict__)
+#
+# # p1.__x = 100
+# # p1.__y = 'abc'
+# # print(p1.__x, p1.__y)
 # print(p1.__dict__)
-
-# p1.__x = 100
-# p1.__y = 'abc'
-# print(p1.__x, p1.__y)
-print(p1.__dict__)
