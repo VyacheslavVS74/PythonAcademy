@@ -5744,27 +5744,27 @@
 
 # Миксин (примеси) ----------------------------------------------------------------------
 
-class Displayer:
-    @staticmethod
-    def display(message):
-        print(message)
-
-
-class LoggerMixin:
-    def log(self, message, filename='logfile.txt'):
-        with open(filename, 'a') as fh:
-            fh.write(message)
-
-    def display(self, message):
-        Displayer.display(message)
-        self.log(message)
-
-
-class MySubClass(LoggerMixin, Displayer):
-    def log(self, message, filename=''):
-        super().log(message, filename='subclass.txt')
-
-
-sub = MySubClass()
-sub.display('Строка будет отображаться и регистрироваться в файле')
-print(MySubClass.mro())
+# class Displayer:
+#     @staticmethod
+#     def display(message):
+#         print(message)
+#
+#
+# class LoggerMixin:
+#     def log(self, message, filename='logfile.txt'):
+#         with open(filename, 'a') as fh:
+#             fh.write(message)
+#
+#     def display(self, message):
+#         Displayer.display(message)
+#         self.log(message)
+#
+#
+# class MySubClass(LoggerMixin, Displayer):
+#     def log(self, message, filename=''):
+#         super().log(message, filename='subclass.txt')
+#
+#
+# sub = MySubClass()
+# sub.display('Строка будет отображаться и регистрироваться в файле')
+# print(MySubClass.mro())
