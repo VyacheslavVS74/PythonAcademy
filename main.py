@@ -5768,3 +5768,5 @@ print(Point.mro())
 # sub = MySubClass()
 # sub.display('Строка будет отображаться и регистрироваться в файле')
 # print(MySubClass.mro())
+
+print('hj')
