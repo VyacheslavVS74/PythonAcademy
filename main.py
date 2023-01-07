@@ -5703,43 +5703,43 @@
 # l1.draw()
 
 
-class Point:
-    def __init__(self, x=0, y=0):
-        self.x = x
-        self.y = y
-
-    def __str__(self):
-        return f'({self.x}, {self.y})'
-
-
-class Style:
-    def __init__(self, color='red', width=1):
-        print('Инициализатор Style')
-        self._color = color
-        self._width = width
-
-
-class Pos:
-    def __init__(self, sp: Point, ep: Point, *args):
-        print('инициализатор Pos')
-        self._sp = sp
-        self._ep = ep
-        super().__init__(*args)
-
-
-class Line(Pos, Style):
-    # def __init__(self, sp: Point, ep: Point, color='red', width=1):
-    #     Pos.__init__(self, sp, ep)
-    #     Style.__init__(self, color, width)
-
-    def draw(self):
-        print(f'Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}')
-
-
-l1 = Line(Point(10, 10), Point(100, 100), 'green', 5)
-l1.draw()
-print(Line.mro())
-print(Point.mro())
+# class Point:
+#     def __init__(self, x=0, y=0):
+#         self.x = x
+#         self.y = y
+#
+#     def __str__(self):
+#         return f'({self.x}, {self.y})'
+#
+# 
+# class Style:
+#     def __init__(self, color='red', width=1):
+#         print('Инициализатор Style')
+#         self._color = color
+#         self._width = width
+#
+#
+# class Pos:
+#     def __init__(self, sp: Point, ep: Point, *args):
+#         print('инициализатор Pos')
+#         self._sp = sp
+#         self._ep = ep
+#         super().__init__(*args)
+#
+#
+# class Line(Pos, Style):
+#     # def __init__(self, sp: Point, ep: Point, color='red', width=1):
+#     #     Pos.__init__(self, sp, ep)
+#     #     Style.__init__(self, color, width)
+#
+#     def draw(self):
+#         print(f'Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}')
+#
+#
+# l1 = Line(Point(10, 10), Point(100, 100), 'green', 5)
+# l1.draw()
+# print(Line.mro())
+# print(Point.mro())
 
 
 # Миксин (примеси) ----------------------------------------------------------------------
@@ -5769,4 +5769,4 @@ print(Point.mro())
 # sub.display('Строка будет отображаться и регистрироваться в файле')
 # print(MySubClass.mro())
 
-print('hj')
+print('hello')
