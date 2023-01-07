@@ -5711,7 +5711,7 @@
 #     def __str__(self):
 #         return f'({self.x}, {self.y})'
 #
-# 
+#
 # class Style:
 #     def __init__(self, color='red', width=1):
 #         print('Инициализатор Style')
@@ -5769,4 +5769,3 @@
 # sub.display('Строка будет отображаться и регистрироваться в файле')
 # print(MySubClass.mro())
 
-print('hello')
