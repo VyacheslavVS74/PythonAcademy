@@ -184,30 +184,145 @@
 # printBases(SuperTwo)
 # printBases(Sub)
 
-#------------------------------------------------
-# class MyClass:
+# ------------------------------------------------
+class MyClass:
+    pass
+
+
+obj = MyClass()
+obj.a = 1
+obj.b = 2
+obj.i = 3
+obj.ireal = 3.5
+obj.integer = 4
+obj.z = 5
+
+
+def incIntsI(obj):
+    for name in obj.__dict__.keys():
+        if name.startswith('i'):
+            val = getattr(obj, name)
+            if isinstance(val, int):
+                setattr(obj, name, val + 1)
+
+
+print(obj.__dict__)
+incIntsI(obj)
+print(obj.__dict__)
+# -------------------------------------------------------
+
+# class Vehicle:
 #     pass
 #
 #
-# obj = MyClass()
-# obj.a = 1
-# obj.b = 2
-# obj.i = 3
-# obj.ireal = 3.5
-# obj.integer = 4
-# obj.z = 5
+# class LandVehicle(Vehicle):
+#     pass
 #
 #
-# def incIntsI(obj):
-#     for name in obj.__dict__.keys():
-#         if name.startswith('i'):
-#             val = getattr(obj, name)
-#             if isinstance(val, int):
-#                 setattr(obj, name, val + 1)
+# class TrackedVehicle(LandVehicle):
+#     pass
 #
 #
-# print(obj.__dict__)
-# incIntsI(obj)
-# print(obj.__dict__)
-#-------------------------------------------------------
+# for cls1 in [Vehicle, LandVehicle, TrackedVehicle]:
+#     for cls2 in [Vehicle, LandVehicle, TrackedVehicle]:
+#         print(issubclass(cls1, cls2), end="\t")
+#     print()
 
+
+# class Vehicle:
+#     pass
+#
+#
+# class LandVehicle(Vehicle):
+#     pass
+#
+#
+# class TrackedVehicle(LandVehicle):
+#     pass
+#
+#
+# myVehicle = Vehicle()
+# myLandVehicle = LandVehicle()
+# myTrackedVehicle = TrackedVehicle()
+# for obj in [myVehicle, myLandVehicle, myTrackedVehicle]:
+#     for cls in [Vehicle, LandVehicle, TrackedVehicle]:
+#         print(isinstance(obj, cls), end="\t")
+#     print()
+
+
+# class SampleClass:
+#     def __init__(self, val):
+#         self.val = val
+#
+#
+# ob1 = SampleClass(0)
+# ob2 = SampleClass(2)
+# ob3 = ob1
+# ob3.val += 1
+# print(ob1 is ob2)
+# print(ob2 is ob3)
+# print(ob3 is ob1)
+# print(ob1.val, ob2.val, ob3.val)
+# str1 = "Mary had a little "
+# str2 = "Mary had a little lamb"
+# str1 += "lamb"
+# print(str1 == str2, str1 is str2)
+
+
+# # 19 и 20 стр 10 урок напутан код и описанеие --------------------------------------------
+# class SuperA:
+#     varA = 10
+#
+#     def funA(self):
+#         return 11
+#
+#
+# class SuperB:
+#     varB = 20
+#
+#     def funB(self):
+#         return 21
+#
+#
+# class Sub(SuperA, SuperB):
+#     pass
+#
+# obj = Sub()
+# print(obj.varA, obj.funA())
+# print(obj.varB, obj.funB())
+
+# class Left:
+#     var = "L"
+#     varLeft = "LL"
+#
+#     def fun(self):
+#         return "Left"
+#
+#
+# class Right:
+#     var = "R"
+#     varRight = "RR"
+#
+#     def fun(self):
+#         return "Right"
+#
+#
+# class Sub(Left, Right):
+#     pass
+#
+#
+# obj = Sub()
+# print(obj.var, obj.varLeft, obj.varRight, obj.fun())
+
+
+def printExcTree(thisclass, nest = 0):
+    if nest > 1:
+        print(" |" * (nest - 1), end="")
+    if nest > 0:
+        print(" +---", end="")
+        print(thisclass.__name__)
+    for subclass in thisclass.__subclasses__():
+        printExcTree(subclass, nest + 1)
+
+
+printExcTree(BaseException)
