@@ -185,30 +185,30 @@
 # printBases(Sub)
 
 # ------------------------------------------------
-class MyClass:
-    pass
-
-
-obj = MyClass()
-obj.a = 1
-obj.b = 2
-obj.i = 3
-obj.ireal = 3.5
-obj.integer = 4
-obj.z = 5
-
-
-def incIntsI(obj):
-    for name in obj.__dict__.keys():
-        if name.startswith('i'):
-            val = getattr(obj, name)
-            if isinstance(val, int):
-                setattr(obj, name, val + 1)
-
-
-print(obj.__dict__)
-incIntsI(obj)
-print(obj.__dict__)
+# class MyClass:
+#     pass
+#
+#
+# obj = MyClass()
+# obj.a = 1
+# obj.b = 2
+# obj.i = 3
+# obj.ireal = 3.5
+# obj.integer = 4
+# obj.z = 5
+#
+#
+# def incIntsI(obj):
+#     for name in obj.__dict__.keys():
+#         if name.startswith('i'):
+#             val = getattr(obj, name)
+#             if isinstance(val, int):
+#                 setattr(obj, name, val + 1)
+#
+#
+# print(obj.__dict__)
+# incIntsI(obj)
+# print(obj.__dict__)
 # -------------------------------------------------------
 
 # class Vehicle:
@@ -315,14 +315,16 @@ print(obj.__dict__)
 # print(obj.var, obj.varLeft, obj.varRight, obj.fun())
 
 
-def printExcTree(thisclass, nest = 0):
-    if nest > 1:
-        print(" |" * (nest - 1), end="")
-    if nest > 0:
-        print(" +---", end="")
-        print(thisclass.__name__)
-    for subclass in thisclass.__subclasses__():
-        printExcTree(subclass, nest + 1)
+# def printExcTree(thisclass, nest = 0):
+#     if nest > 1:
+#         print(" |" * (nest - 1), end="")
+#     if nest > 0:
+#         print(" +---", end="")
+#         print(thisclass.__name__)
+#     for subclass in thisclass.__subclasses__():
+#         printExcTree(subclass, nest + 1)
+#
+#
+# printExcTree(BaseException)
 
 
-printExcTree(BaseException)
