@@ -5355,59 +5355,59 @@
 # q.move()
 
 
-# from abc import ABC, abstractmethod
-#
-#
-# class Currency(ABC):
-#     def __init__(self, value):
-#         self.value = value
-#
-#     @abstractmethod
-#     def convert_to_rub(self):
-#         pass
-#
-#     #  @abstractmethod можно поставить, хотя и не обязательно
-#     def print_value(self):
-#         print(self.value, end=' ')
-#
-#
-# class Dollar(Currency):
-#     rate_to_rub = 74.16
-#     suffix = 'USD'
-#
-#     def convert_to_rub(self):
-#         rub = self.value * Dollar.rate_to_rub
-#         return rub
-#
-#     def print_value(self):
-#         super(Dollar, self).print_value()
-#         print(Dollar.suffix, end=' ')
-#
-#
-# class Eur(Currency):
-#     rate_to_rub = 90.14
-#     suffix = 'EUR'
-#
-#     def convert_to_rub(self):
-#         rub = self.value * Eur.rate_to_rub
-#         return rub
-#
-#     def print_value(self):
-#         super().print_value()
-#         print(Eur.suffix, end=' ')
-#
-#
-# d = [Dollar(5), Dollar(10), Dollar(50), Dollar(100)]
-# print('*' * 50)
-# for i in d:
-#     i.print_value()
-#     print(f'= {i.convert_to_rub():.2f} RUB')
-#
-# print('*' * 50)
-# e = [Eur(5), Eur(10), Eur(50), Eur(100)]
-# for i in e:
-#     i.print_value()
-#     print(f'= {i.convert_to_rub():.2f} RUB')
+from abc import ABC, abstractmethod
+
+
+class Currency(ABC):
+    def __init__(self, value):
+        self.value = value
+
+    @abstractmethod
+    def convert_to_rub(self):
+        pass
+
+    #  @abstractmethod можно поставить, хотя и не обязательно
+    def print_value(self):
+        print(self.value, end=' ')
+
+
+class Dollar(Currency):
+    rate_to_rub = 74.16
+    suffix = 'USD'
+
+    def convert_to_rub(self):
+        rub = self.value * Dollar.rate_to_rub
+        return rub
+
+    def print_value(self):
+        super(Dollar, self).print_value()
+        print(Dollar.suffix, end=' ')
+
+
+class Eur(Currency):
+    rate_to_rub = 90.14
+    suffix = 'EUR'
+
+    def convert_to_rub(self):
+        rub = self.value * Eur.rate_to_rub
+        return rub
+
+    def print_value(self):
+        super().print_value()
+        print(Eur.suffix, end=' ')
+
+
+d = [Dollar(5), Dollar(10), Dollar(50), Dollar(100)]
+print('*' * 50)
+for i in d:
+    i.print_value()
+    print(f'= {i.convert_to_rub():.2f} RUB')
+
+print('*' * 50)
+e = [Eur(5), Eur(10), Eur(50), Eur(100)]
+for i in e:
+    i.print_value()
+    print(f'= {i.convert_to_rub():.2f} RUB')
 
 
 # from abc import ABC, abstractmethod

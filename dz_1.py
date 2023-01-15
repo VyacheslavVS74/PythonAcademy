@@ -328,3 +328,52 @@
 # printExcTree(BaseException)
 
 
+size = 3
+symbol = 7
+for i in range(size):
+    for j in range(symbol):
+        print('*', end='')
+    print()
+
+# def picture(N, t):
+#     list(map(print, ['*' * t] * N))
+
+
+# numbers = [10, 15, 21, 33, 42, 55]
+# mapped_numbers = list(map(lambda x: x * 2 + 3, numbers))
+# print(mapped_numbers)
+
+# count = int(input("Введите длину сторон: "))
+# print("* " * count)
+# for _ in range(count - 2):
+#     print("* ", "  " * (count - 3), "* ")
+# print("* " * count)
+
+# n = 11
+# n1 = 6
+# for i in range(0, n):
+#     print(' ' * i + '&' * (n - i * 2) + ' ' * i)
+# print()
+
+# n = 6
+# n1 = 11
+# for i in range(n + 1, n1 * 2, 2):
+#     print(('*' * i).center(n1 * 2))
+
+
+# size = 7
+# m = (2 * size) - 2
+# for i in range(0, size):
+#     for j in range(0, m):
+#         print(end=" ")
+#     m = m - 1 # уменьшение m после каждого прохода цикла
+#     for j in range(0, i + 1):
+#         # вывод пирамиды из звёздочек
+#         print("*", end=' ')
+#     print(" ")
+
+size = 6
+m = 11
+for i in range(6):
+    print(" " * (6 - 1 - i) + "*" * (1 + i * 2))
+
