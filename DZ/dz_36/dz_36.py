@@ -125,3 +125,39 @@ for s in shape:
 
 # t = Triangle("yellow", 11, 6, 6)
 # print(t.picture())
+
+# разбор на занятии -------------------------------------------
+# class Shape:
+#     def __init__(self, color):
+#         self.color = color
+#
+#
+# class Triangle(Shape):
+#     def __init__(self, a, b, c, color):
+#         super().__init__(color)
+#         self.a = a
+#         self.b = b
+#         self.c = c
+#
+#     # def draw(self):  # 11, 6, 6
+#     #     lst = [self.a, self.b, self.c]
+#     #     n = min(lst)  # 6
+#     #     for i in range(n):  # 1
+#     #         print('-' * (n - i - 1) + '*' * (2 * i + 1))  # "-" * 4 + "*" * 3
+#
+#     def draw(self):
+#         lst = [self.a, self.b, self.c]
+#         n = min(lst)
+#         rows = [' ' * (n - i - 1) + '*' * (2 * i + 1) for i in range(n)]
+#         return '\n'.join(rows)
+#
+#
+# t = Triangle(11, 6, 6, "yellow")
+# # t.draw()
+# print(t.draw())
+#------------------------------
+# res = ""
+# for i in range(6):
+#     res += '\n' + ' ' * (6 - i) + "*" * (2 * i + 1)
+#
+# print(res)

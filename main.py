@@ -1,5 +1,5 @@
 # from random import *
-
+# import random
 
 # name = "Elena"
 # print("Hello!!!", name)
@@ -2955,7 +2955,7 @@
 # t = 2.88, -1.75, 100.55
 # print(tuple(map(lambda x: int(x), t)))
 # print(list(map(lambda x: str(x), t)))
-# # print(list(map(str, t)))
+# print(list(map(str, t)))
 #
 # a = ['2.88', '-1.75', '100.55']
 # # b = list(map(float, a))
@@ -5070,7 +5070,8 @@
 #         self._background = bg
 #
 #     def draw_rect(self):
-#         print(f'Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, {self.get_width()}, {self._background}')
+#         print(f'Рисование прямоугольника: {self._sp}'
+#               f', {self._ep}, {self._color}, {self.get_width()}, {self._background}')
 #
 #
 # line = Line(Point(1, 2), Point(10, 20))
@@ -5355,59 +5356,59 @@
 # q.move()
 
 
-from abc import ABC, abstractmethod
-
-
-class Currency(ABC):
-    def __init__(self, value):
-        self.value = value
-
-    @abstractmethod
-    def convert_to_rub(self):
-        pass
-
-    #  @abstractmethod можно поставить, хотя и не обязательно
-    def print_value(self):
-        print(self.value, end=' ')
-
-
-class Dollar(Currency):
-    rate_to_rub = 74.16
-    suffix = 'USD'
-
-    def convert_to_rub(self):
-        rub = self.value * Dollar.rate_to_rub
-        return rub
-
-    def print_value(self):
-        super(Dollar, self).print_value()
-        print(Dollar.suffix, end=' ')
-
-
-class Eur(Currency):
-    rate_to_rub = 90.14
-    suffix = 'EUR'
-
-    def convert_to_rub(self):
-        rub = self.value * Eur.rate_to_rub
-        return rub
-
-    def print_value(self):
-        super().print_value()
-        print(Eur.suffix, end=' ')
-
-
-d = [Dollar(5), Dollar(10), Dollar(50), Dollar(100)]
-print('*' * 50)
-for i in d:
-    i.print_value()
-    print(f'= {i.convert_to_rub():.2f} RUB')
-
-print('*' * 50)
-e = [Eur(5), Eur(10), Eur(50), Eur(100)]
-for i in e:
-    i.print_value()
-    print(f'= {i.convert_to_rub():.2f} RUB')
+# from abc import ABC, abstractmethod
+#
+#
+# class Currency(ABC):
+#     def __init__(self, value):
+#         self.value = value
+#
+#     @abstractmethod
+#     def convert_to_rub(self):
+#         pass
+#
+#     #  @abstractmethod можно поставить, хотя и не обязательно
+#     def print_value(self):
+#         print(self.value, end=' ')
+#
+#
+# class Dollar(Currency):
+#     rate_to_rub = 74.16
+#     suffix = 'USD'
+#
+#     def convert_to_rub(self):
+#         rub = self.value * Dollar.rate_to_rub
+#         return rub
+#
+#     def print_value(self):
+#         super(Dollar, self).print_value()
+#         print(Dollar.suffix, end=' ')
+#
+#
+# class Eur(Currency):
+#     rate_to_rub = 90.14
+#     suffix = 'EUR'
+#
+#     def convert_to_rub(self):
+#         rub = self.value * Eur.rate_to_rub
+#         return rub
+#
+#     def print_value(self):
+#         super().print_value()
+#         print(Eur.suffix, end=' ')
+#
+#
+# d = [Dollar(5), Dollar(10), Dollar(50), Dollar(100)]
+# print('*' * 50)
+# for i in d:
+#     i.print_value()
+#     print(f'= {i.convert_to_rub():.2f} RUB')
+#
+# print('*' * 50)
+# e = [Eur(5), Eur(10), Eur(50), Eur(100)]
+# for i in e:
+#     i.print_value()
+#     print(f'= {i.convert_to_rub():.2f} RUB')
 
 
 # from abc import ABC, abstractmethod
@@ -6312,3 +6313,298 @@ for i in e:
 #
 # s1 = strip_chars('&$:;!?` ')
 # print(s1(' !?:Hello World!; '))
+
+
+# 17.01.2023 =================================================================================
+
+# from random import *
+#
+#
+# class Cat:
+#     def __init__(self, name, pol, age):
+#         self.name = name
+#         self.pol = pol
+#         self.age = age
+#
+#     def __str__(self):
+#         if self.pol == 'M':
+#             return f'{self.name} is good boy!!!'
+#         elif self.pol == 'F':
+#             return f'{self.name} is good girl!!!'
+#         else:
+#             return f'{self.name} is good kitty!!!'
+#
+#     def __repr__(self):
+#         return f"Cat(name='{self.name}', age={self.age} sex='{self.pol}')"
+#
+#     def __add__(self, other):
+#         if self.pol != other.pol:
+#             return [Cat('No name', 0, choice(['M', 'F'])) for _ in range(1, random.randint(2, 7))]
+#         else:
+#             return 'Types are not support'
+#             # raise TypeError('Types are not support')
+#
+#
+# cat1 = Cat('Tom', 4, 'M')
+# print(cat1)
+# cat2 = Cat('Elsa', 5, 'F')
+# print(cat2)
+# print(cat1 + cat2)
+#
+# cat3 = Cat('Ron', 6, 'M')
+# print(cat3)
+# print(cat1 + cat3)
+
+
+# import random
+#
+#
+# class Cat:
+#     def __init__(self, name, age, pol):
+#         self.name = name
+#         self.pol = pol
+#         self.age = age
+#
+#     def __str__(self):
+#         if self.pol == "M":
+#             return f"{self.name} is good boy!!!"
+#         elif self.pol == "F":
+#             return f"{self.name} is good girl!!!"
+#         else:
+#             return f"{self.name} is good Kitty!!!"
+#
+#     def __repr__(self):
+#         return f"Cat(name='{self.name}', age={self.age}, sex='{self.pol}')"
+#
+#     def __add__(self, other):
+#         if self.pol != other.pol:
+#             return [Cat("No name", 0, random.choice(['M', 'F'])) for _ in range(1, random.randint(2, 7))]
+#         else:
+#             return "Types are not support!"
+#             # raise TypeError("Types are not support!")
+#
+#
+# cat1 = Cat("Tom", 4, "M")
+# # print(cat1)
+# cat2 = Cat("Elsa", 5, "F")
+# # print(cat2)
+# # print(cat1 + cat2)
+# cat3 = Cat("Ron", 3, "M")
+# # print(cat3)
+# # print(cat1 + cat3)
+# #------------
+# lst = [cat1, cat2, cat3]
+# b, c = random.choices(lst, k=2)
+# print(b+c)
+
+# Класс как декоратор ----------------------------------------------------
+
+# class MyDecorator:
+#     def __init__(self, fn):
+#         self.func = fn
+#
+#     def __call__(self):
+#         print('перед вызовом функции')
+#         self.func()
+#         print('после вызова функции')
+#
+#
+# @MyDecorator
+# def func():
+#     print('func')
+#
+#
+# func()
+
+
+# def MyDecorator(fn):
+#     def wrap():
+#         print('перед вызовом функции')
+#         fn()
+#         print('после вызова функции')
+#
+#     return wrap
+#
+#
+# @MyDecorator
+# def func():
+#     print('func')
+#
+#
+# # test = MyDecorator(func)
+# # test()
+# func()
+
+
+# class MyDecorator:
+#     def __init__(self, fn):
+#         self.func = fn
+#
+#     def __call__(self, a, b):
+#         print('перед вызовом функции')
+#         res = self.func(a, b)
+#         return str(res) + '\nпосле вызова функции'
+#
+#
+# @MyDecorator
+# def func(a, b):
+#     return a * b
+#
+#
+# print(func(2, 5))
+#
+# # test = MyDecorator(func)
+# # print(test(2,5))
+
+# class Power:
+#     def __init__(self, fn):
+#         self.func = fn
+#
+#     def __call__(self, a, b):
+#         return self.func(a, b) ** 2
+#
+#
+# @Power
+# def func(a, b):
+#     return a * b
+#
+#
+# print(func(2, 3))
+
+
+# class MyDecorator:
+#     def __init__(self, fn):
+#         self.func = fn
+#
+#     def __call__(self, *args, **kwargs):
+#         print('перед вызовом функции')
+#         res = self.func(*args, **kwargs)
+#         return str(res) + '\nпосле вызова функции'
+#
+#
+# @MyDecorator
+# def func(a, b):
+#     return a * b
+#
+#
+# @MyDecorator
+# def func1(a, b, c):
+#     return a * b * c
+#
+#
+# print(func(2, 5))
+# print(func1(2, 5, 2))
+
+
+# class MyDecorator:
+#     def __init__(self, arg):
+#         self.name = arg
+#
+#     def __call__(self, fn):
+#         def wrap(a, b):
+#             print('перед вызовом функции')
+#             print(self.name, end=': ')
+#             fn(a, b)
+#             print('после вызова функции')
+#
+#         return wrap
+#
+#
+# @MyDecorator('test')
+# def func(a, b):
+#     print(a, b)
+#
+#
+# func(2,5)
+
+# Декорирование методов -----------------------------------------
+
+# def dec(fn):
+#     def wrap(*args, **kwargs):
+#         print('*' * 20)
+#         fn(*args, **kwargs)
+#         print('*' * 20)
+#
+#     return wrap
+#
+#
+# class Person:
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#
+#     @dec
+#     def info(self):
+#         print(f'{self.name} {self.surname}')
+#
+#
+# p1 = Person('Виталий', 'Карасев')
+# p1.info()
+
+# Дескрипторы ------------------------------------------------------------
+# __get__, __set__, __delete__
+
+# class StringD:
+#     def __init__(self, value=None):
+#         if value:
+#             self.set(value)
+#
+#     def set(self, value):
+#         self.__value = value
+#
+#     def get(self):
+#         return self.__value
+#
+#
+# class Person:
+#     def __init__(self, name, surname):
+#         self.name = StringD(name)
+#         self.surname = StringD(surname)
+#
+#     # @property
+#     # def name(self):
+#     #     return self.__name
+#     #
+#     # @name.setter
+#     # def name(self, value):
+#     #     self.__name = value
+#     #
+#     # @property
+#     # def surname(self):
+#     #     return self.__surname
+#     #
+#     # @surname.setter
+#     # def surname(self, value):
+#     #     self.__surname = value
+#
+#
+# p = Person('Ivan', 'Petrov')
+# p.name.set('Oleg')
+# print(p.name.get(), p.surname.get())
+
+# class ValidateString:
+#     def __set_name__(self, owner, name):
+#         self.__name = name
+#
+#     def __get__(self, instance, owner):
+#         return instance.__dict__[self.__name]
+#
+#     def __set__(self, instance, value):
+#         if not isinstance(value, str):
+#             raise ValueError(f'{self.__name} должно быть строкой')
+#         instance.__dict__[self.__name] = value
+#
+#
+# class Person:
+#     name = ValidateString()
+#     surname = ValidateString()
+#
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#
+#
+# p = Person('Ivan', 'Petrov')
+# p.name = 'Oleg'
+# print(p.name)
+# print(p.surname)

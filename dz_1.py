@@ -328,12 +328,12 @@
 # printExcTree(BaseException)
 
 
-size = 3
-symbol = 7
-for i in range(size):
-    for j in range(symbol):
-        print('*', end='')
-    print()
+# size = 3
+# symbol = 7
+# for i in range(size):
+#     for j in range(symbol):
+#         print('*', end='')
+#     print()
 
 # def picture(N, t):
 #     list(map(print, ['*' * t] * N))
@@ -372,8 +372,8 @@ for i in range(size):
 #         print("*", end=' ')
 #     print(" ")
 
-size = 6
-m = 11
-for i in range(6):
-    print(" " * (6 - 1 - i) + "*" * (1 + i * 2))
+# size = 6
+# m = 11
+# for i in range(6):
+#     print(" " * (6 - 1 - i) + "*" * (1 + i * 2))
 
