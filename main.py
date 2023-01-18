@@ -6496,26 +6496,26 @@
 # print(func1(2, 5, 2))
 
 
-# class MyDecorator:
-#     def __init__(self, arg):
-#         self.name = arg
-#
-#     def __call__(self, fn):
-#         def wrap(a, b):
-#             print('перед вызовом функции')
-#             print(self.name, end=': ')
-#             fn(a, b)
-#             print('после вызова функции')
-#
-#         return wrap
-#
-#
-# @MyDecorator('test')
-# def func(a, b):
-#     print(a, b)
-#
-#
-# func(2,5)
+class MyDecorator:
+    def __init__(self, arg):
+        self.name = arg
+
+    def __call__(self, fn):
+        def wrap(a, b):
+            print('перед вызовом функции')
+            print(self.name, end=': ')
+            fn(a, b)
+            print('после вызова функции')
+
+        return wrap
+
+
+@MyDecorator('test')
+def func(a, b):
+    print(a, b)
+
+
+func(2,5)
 
 # Декорирование методов -----------------------------------------
 
