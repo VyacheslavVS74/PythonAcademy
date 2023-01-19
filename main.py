@@ -6636,38 +6636,38 @@
 #
 # func(2, 2)
 
-# class NoneNegative:
-#     def __set_name__(self, owner, name):
-#         self.name = name
-#
-#     def __get__(self, instance, owner):
-#         return instance.__dict__[self.name]
-#
-#     def __set__(self, instance, value):
-#         if value < 0:
-#             raise ValueError(f'Значение {self.name} должно быть положительным')
-#         instance.__dict__[self.name] = value
-#
-#
-# class Order:
-#     price = NoneNegative()
-#     qty = NoneNegative()
-#
-#     def __init__(self, name, price, qty):
-#         self.name = name
-#         self.price = price
-#         self.qty = qty
-#
-#     def total(self):
-#         return self.price * self.qty
-#
-#
-# a = Order('apple', 5, 10)
-#
-# print(a.total())
-# a.price = 20
-# a.qty = 10
-# print(a.total())
+class NoneNegative:
+    def __set_name__(self, owner, name):
+        self.name = name
+
+    def __get__(self, instance, owner):
+        return instance.__dict__[self.name]
+
+    def __set__(self, instance, value):
+        if value < 0:
+            raise ValueError(f'Значение {self.name} должно быть положительным')
+        instance.__dict__[self.name] = value
+
+
+class Order:
+    price = NoneNegative()
+    qty = NoneNegative()
+
+    def __init__(self, name, price, qty):
+        self.name = name
+        self.price = price
+        self.qty = qty
+
+    def total(self):
+        return self.price * self.qty
+
+
+a = Order('apple', 5, 10)
+
+print(a.total())
+a.price = 20
+a.qty = 10
+print(a.total())
 
 # class Integer:
 #     @staticmethod
