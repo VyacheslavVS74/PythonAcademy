@@ -6496,26 +6496,26 @@
 # print(func1(2, 5, 2))
 
 
-class MyDecorator:
-    def __init__(self, arg):
-        self.name = arg
-
-    def __call__(self, fn):
-        def wrap(a, b):
-            print('перед вызовом функции')
-            print(self.name, end=': ')
-            fn(a, b)
-            print('после вызова функции')
-
-        return wrap
-
-
-@MyDecorator('test')
-def func(a, b):
-    print(a, b)
-
-
-func(2,5)
+# class MyDecorator:
+#     def __init__(self, arg):
+#         self.name = arg
+#
+#     def __call__(self, fn):
+#         def wrap(a, b):
+#             print('перед вызовом функции')
+#             print(self.name, end=': ')
+#             fn(a, b)
+#             print('после вызова функции')
+#
+#         return wrap
+#
+#
+# @MyDecorator('test')
+# def func(a, b):
+#     print(a, b)
+#
+#
+# func(2, 5)
 
 # Декорирование методов -----------------------------------------
 
@@ -6608,3 +6608,207 @@ func(2,5)
 # p.name = 'Oleg'
 # print(p.name)
 # print(p.surname)
+
+# 19.01.2023 ========================================================================
+
+# # class Power:
+# #     def __init__(self, degree):
+# #         self.degree = degree
+# #
+# #     def __call__(self, fn):
+# #         def wrap(a, b):
+# #             print('Результат: ', fn(a, b) ** self.degree)
+# #
+# #         return wrap
+#
+# def power(degree):
+#     def call(fn):
+#         def wrap(a, b):
+#             print('Результат: ', fn(a, b) ** degree)
+#         return wrap
+#     return call
+#
+#
+# @power(3)  # @Power(3)
+# def func(a, b):
+#     return a * b
+#
+#
+# func(2, 2)
+
+# class NoneNegative:
+#     def __set_name__(self, owner, name):
+#         self.name = name
+#
+#     def __get__(self, instance, owner):
+#         return instance.__dict__[self.name]
+#
+#     def __set__(self, instance, value):
+#         if value < 0:
+#             raise ValueError(f'Значение {self.name} должно быть положительным')
+#         instance.__dict__[self.name] = value
+#
+#
+# class Order:
+#     price = NoneNegative()
+#     qty = NoneNegative()
+#
+#     def __init__(self, name, price, qty):
+#         self.name = name
+#         self.price = price
+#         self.qty = qty
+#
+#     def total(self):
+#         return self.price * self.qty
+#
+#
+# a = Order('apple', 5, 10)
+#
+# print(a.total())
+# a.price = 20
+# a.qty = 10
+# print(a.total())
+
+# class Integer:
+#     @staticmethod
+#     def verify_coord(coord):
+#         if not isinstance(coord, int):
+#             raise TypeError(f'Координата {coord} должна быть целым числом')
+#
+#     def __set_name__(self, owner, name):
+#         self.name = "_" + name
+#
+#     def __get__(self, instance, owner):
+#         return instance.__dict__[self.name]
+#
+#     def __set__(self, instance, value):
+#         self.verify_coord(value)
+#         instance.__dict__[self.name] = value
+#
+#
+# class Point3D:
+#     x = Integer()
+#     y = Integer()
+#     z = Integer()
+#
+#     def __init__(self, x, y, z):
+#         self.x = x
+#         self.y = y
+#         self.z = z
+#
+#
+# p1 = Point3D(1, 2, 3)
+# print(p1.__dict__)
+# print(p1.x)
+# # print(p1._x)
+
+# class Integer:
+#     @staticmethod
+#     def verify_coord(coord):
+#         if not isinstance(coord, int):
+#             raise TypeError(f'Координата {coord} должна быть целым числом')
+#
+#     def __set_name__(self, owner, name):
+#         self.name = "_" + name
+#
+#     def __get__(self, instance, owner):
+#         # return instance.__dict__[self.name]
+#         return getattr(instance, self.name)
+#
+#     def __set__(self, instance, value):
+#         self.verify_coord(value)
+#         # instance.__dict__[self.name] = value
+#         setattr(instance, self.name, value)
+#
+#     def __delete__(self, instance):
+#         # del instance.__dict__[self.name]
+#         delattr(instance, self.name)
+#
+#
+# class Point3D:
+#     x = Integer()
+#     y = Integer()
+#     z = Integer()
+#
+#     def __init__(self, x, y, z):
+#         self.x = x
+#         self.y = y
+#         self.z = z
+#
+#
+# p1 = Point3D(1, 2, 3)
+# print(p1.__dict__)
+# print(p1.x)
+# del p1.x
+# print(p1.__dict__)
+# # print(p1._x)
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#
+# p1 = Point(5, 10)
+# print(p1.__dict__)
+# print(getattr(p1, 'x'))
+# setattr(p1, 'x', 6)
+# p1.x = 7
+# print(p1.__dict__)
+# # print(p1.x)
+# # print(hasattr((p1, 'z')))
+
+
+# class Integer:
+#
+#     def __set_name__(self, owner, name):
+#         self.name = "_" + name
+#
+#     def __get__(self, instance, owner):
+#         # return instance.__dict__[self.name]
+#         return getattr(instance, self.name)
+#
+#
+# class Point3D:
+#     x = Integer()
+#     y = Integer()
+#     z = Integer()
+#
+#     def __init__(self, x, y, z):
+#         self.x = x
+#         self.y = y
+#         self.z = z
+#
+#
+# p1 = Point3D(1, 2, 3)
+# print(p1.__dict__)
+# print(p1.y)
+
+# Создание Модулей -------------------------------------------------------------------------
+
+# import geometry.rect
+# import geometry.sq
+# import geometry.trian
+
+from geometry import rect, sq, trian
+
+# from geometry import *
+
+r1 = rect.Rectangle(1, 2)
+r2 = rect.Rectangle(3, 4)
+
+
+s1 = sq.Square(10)
+s2 = sq.Square(20)
+
+
+t1 = trian.Triangle(1, 2, 3)
+t2 = trian.Triangle(4, 5, 6)
+
+shape = [r1, r2, s1, s2, t1, t2]
+for g in shape:
+    print(g.get_perimetr())
+
+
+

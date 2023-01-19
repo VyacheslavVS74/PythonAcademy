@@ -5,14 +5,15 @@ class Power:
 
     def __call__(self, fn):
         def wrap(a, b):
-            print('Результат: ', (a * b) ** self.degree)
+            print('Результат: ', fn(a, b) ** self.degree)
 
         return wrap
 
 
 @Power(3)
 def func(a, b):
-    print(a * b)
+    return a * b
 
 
 func(2, 2)
+
