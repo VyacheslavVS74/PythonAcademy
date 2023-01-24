@@ -6636,38 +6636,38 @@
 #
 # func(2, 2)
 
-class NoneNegative:
-    def __set_name__(self, owner, name):
-        self.name = name
-
-    def __get__(self, instance, owner):
-        return instance.__dict__[self.name]
-
-    def __set__(self, instance, value):
-        if value < 0:
-            raise ValueError(f'Значение {self.name} должно быть положительным')
-        instance.__dict__[self.name] = value
-
-
-class Order:
-    price = NoneNegative()
-    qty = NoneNegative()
-
-    def __init__(self, name, price, qty):
-        self.name = name
-        self.price = price
-        self.qty = qty
-
-    def total(self):
-        return self.price * self.qty
-
-
-a = Order('apple', 5, 10)
-
-print(a.total())
-a.price = 20
-a.qty = 10
-print(a.total())
+# class NoneNegative:
+#     def __set_name__(self, owner, name):
+#         self.name = name
+#
+#     def __get__(self, instance, owner):
+#         return instance.__dict__[self.name]
+#
+#     def __set__(self, instance, value):
+#         if value < 0:
+#             raise ValueError(f'Значение {self.name} должно быть положительным')
+#         instance.__dict__[self.name] = value
+#
+#
+# class Order:
+#     price = NoneNegative()
+#     qty = NoneNegative()
+#
+#     def __init__(self, name, price, qty):
+#         self.name = name
+#         self.price = price
+#         self.qty = qty
+#
+#     def total(self):
+#         return self.price * self.qty
+#
+#
+# a = Order('apple', 5, 10)
+#
+# print(a.total())
+# a.price = 20
+# a.qty = 10
+# print(a.total())
 
 # class Integer:
 #     @staticmethod
@@ -6791,24 +6791,153 @@ print(a.total())
 # import geometry.sq
 # import geometry.trian
 
-from geometry import rect, sq, trian
+# from geometry import rect, sq, trian
+#
+# # from geometry import *
+#
+# r1 = rect.Rectangle(1, 2)
+# r2 = rect.Rectangle(3, 4)
+#
+#
+# s1 = sq.Square(10)
+# s2 = sq.Square(20)
+#
+#
+# t1 = trian.Triangle(1, 2, 3)
+# t2 = trian.Triangle(4, 5, 6)
+#
+# shape = [r1, r2, s1, s2, t1, t2]
+# for g in shape:
+#     print(g.get_perimetr())
 
-# from geometry import *
+# 24.01.2023 =======================================================================================
 
-r1 = rect.Rectangle(1, 2)
-r2 = rect.Rectangle(3, 4)
-
-
-s1 = sq.Square(10)
-s2 = sq.Square(20)
-
-
-t1 = trian.Triangle(1, 2, 3)
-t2 = trian.Triangle(4, 5, 6)
-
-shape = [r1, r2, s1, s2, t1, t2]
-for g in shape:
-    print(g.get_perimetr())
-
+# from Car import electrocar
+#
+# print("Строка")
+#
+#
+# def run():
+#     e_car = electrocar.ElectroCar("Tesla", "T", 2020, 50000)
+#     e_car.show_car()
+#     e_car.description_baattery()
+#
+#
+# if __name__ == '__main__':
+#     run()
 
 
+# упаковка данных ---------------------------------------------
+# кодирование (сериализация)
+# декодирование (десериализация)
+
+# 1. marshal (.pyc) пай си
+# 2. pickle
+# 3. json
+
+# dump() - сохраняет данные в файл
+# load() - считываем данные из открытого файла
+
+# dumps() - сохраняет данные в строку (в памяти)
+# loads() - считываем данные из строки (из памяти)
+
+# import pickle
+#
+# filename = 'basket.txt'
+#
+# shop_list = {
+#     "фрукты": ["яблоки", "манго"],
+#     "овощи": ["морковь"],
+#     "бюджет покупки": 1000
+# }
+#
+# with open(filename, "wb") as fh:
+#     pickle.dump(shop_list, fh)
+#
+# with open(filename, "rb") as fh:
+#     shop = pickle.load(fh)
+#
+# print(shop)
+
+# import pickle
+#
+#
+# class Test:
+#     num = 35
+#     st = "привет"
+#     lst = [1, 2, 3]
+#     d = {"first": "a", "second": 2}
+#     tpl = (22, 33)
+#
+#     def __str__(self):
+#         return f"Число: {Test.num}\nСтрока: {Test.st}\nСписок: {Test.lst}\nСловарь: {Test.d}\nКортеж: {Test.tpl}"
+#
+#
+# obj = Test()
+#
+# my_obj = pickle.dumps(obj)
+# print(f"Сериализация в строку: \n{my_obj}\n")
+#
+# l_obj = pickle.loads(my_obj)
+# print(f"Десериализация в строку: \n{l_obj}\n")
+
+# import pickle
+#
+#
+# class Test2:
+#     def __init__(self):
+#         self.a = 35
+#         self.b = "test"
+#         self.c = lambda x: x * x
+#
+#     def __str__(self):
+#         return f"{self.a} {self.b} {self.c(2)}"
+#
+#     def __getstate__(self):
+#         attr = self.__dict__.copy()
+#         del attr["c"]
+#         return attr
+#
+#     def __setstate__(self, state):
+#         self.__dict__ = state
+#         self.c = lambda x: x * x
+#
+#
+# item1 = Test2()
+# item2 = pickle.dumps(item1)
+# # print(item2)
+# item3 = pickle.loads(item2)
+# # print(item3.__dict__)
+# print(item3)
+
+import json
+
+data = {
+    'name': 'игорь',
+    'hobbies': ('running', 'sky diving'),
+    'age': 20,
+    'children': [
+        {
+            'firstName': 'Alice',
+            'age': 5
+        },
+{
+            'firstName': 'Bob',
+            'age': 8
+        }
+    ]
+}
+
+# with open("data_file.json", "w") as fw:
+#     json.dump(data, fw, indent=4)
+#
+# with open("data_file.json", "r") as fw:
+#     data = json.load(fw)
+#     print(data)
+
+json_string = json.dumps(data, ensure_ascii=False)  # ensure_ascii=False если надо на кириллице имя
+
+data = json.loads(json_string)
+print(data)
+
+# создать класс, свойства класса сохранить в json обьект
