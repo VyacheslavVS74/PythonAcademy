@@ -1,5 +1,6 @@
 # from random import *
 # import random
+# import json
 
 # name = "Elena"
 # print("Hello!!!", name)
@@ -3285,7 +3286,7 @@
 # print(0o20)  # 16
 # print(0x11 + 3)
 
-# FF0000  # 16ая система счисления
+# FF0000 # 16ая система счисления
 # rgb(255,0,0)  # 10ая система счисления
 
 # q = 'Pyt'
@@ -6910,34 +6911,201 @@
 # # print(item3.__dict__)
 # print(item3)
 
-import json
-
-data = {
-    'name': 'игорь',
-    'hobbies': ('running', 'sky diving'),
-    'age': 20,
-    'children': [
-        {
-            'firstName': 'Alice',
-            'age': 5
-        },
-{
-            'firstName': 'Bob',
-            'age': 8
-        }
-    ]
-}
-
-# with open("data_file.json", "w") as fw:
-#     json.dump(data, fw, indent=4)
+# import json
 #
-# with open("data_file.json", "r") as fw:
-#     data = json.load(fw)
-#     print(data)
+# data = {
+#     'name': 'игорь',
+#     'hobbies': ('running', 'sky diving'),
+#     'age': 20,
+#     'children': [
+#         {
+#             'firstName': 'Alice',
+#             'age': 5
+#         },
+# {
+#             'firstName': 'Bob',
+#             'age': 8
+#         }
+#     ]
+# }
+#
+# # with open("data_file.json", "w") as fw:
+# #     json.dump(data, fw, indent=4)
+# #
+# # with open("data_file.json", "r") as fw:
+# #     data = json.load(fw)
+# #     print(data)
+#
+# json_string = json.dumps(data, ensure_ascii=False)  # ensure_ascii=False если надо на кириллице имя
+#
+# data = json.loads(json_string)
+# print(data)
 
-json_string = json.dumps(data, ensure_ascii=False)  # ensure_ascii=False если надо на кириллице имя
+# создать класс, свойства класса сохранить в json объект
 
-data = json.loads(json_string)
-print(data)
+# 26.01.2023 ================================================================================
 
-# создать класс, свойства класса сохранить в json обьект
+# import json
+#
+#
+# class OtherBox:
+#     def __init__(self,*args,**kwargs):
+#         self.base = {
+#             'name': 'Павел',
+#             'surname': 'Anonim',
+#             'age': 18,
+#             'id': 1
+#         }
+#
+#     def show_info(self):
+#         with open("data_file.json", 'w') as fw:
+#             json.dump(self.base, fw)
+#         with open("data_file.json", 'r') as fw:
+#             data = json.load(fw)
+#         print(data)
+#
+#
+# a = OtherBox()
+# a.show_info()
+
+# import json
+#
+#
+# class Test2:
+#     count = 0
+#
+#     def __init__(self):
+#         self.a = 35
+#         self.b = "test"
+#         self.c = lambda x: x * x
+#
+#     def __str__(self):
+#         return f"{self.a} {self.b} {self.c(2)}, {Test2.count}"
+#
+#
+# data = Test2()
+# json_string = json.dumps(data.__str__())  # default=str
+# data1 = json.loads(json_string)
+# print(data)
+
+# --------------------------------------------------------- DZ
+import json
+from random import choice
+
+
+def get_person():
+    name = ""
+    tel = ""
+
+    letter = ["a", "b", "c", "d", "e", "f", "g", "h"]
+    nums = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+
+    while len(name) != 7:
+        name += choice(letter)
+    # print(name)
+
+    while len(tel) != 10:
+        tel += choice(nums)
+    # print(tel)
+
+    person = {
+        "name": name,
+        "tel": tel
+    }
+    return person
+
+
+def write_json(person_dict):
+    try:
+        data = json.load(open("persons.json"))  # [{}]
+    except FileNotFoundError:
+        data = {}
+
+    data.append(person_dict)  # [{}, {}]
+    with open("persons.json", "w") as f:
+        json.dump(data, f, indent=2)  # [{}, {}]
+
+
+for i in range(5):
+    write_json(get_person())
+
+# ---------------------------------------------------------
+
+# class Student:
+#     def __init__(self, name, marks):
+#         self.name = name
+#         self.marks = marks
+#
+#     def __str__(self):
+#         # a = ""
+#         # for i in self.marks:
+#         #     a += f'{i}, '
+#         a = ", ".join(map(str, self.marks))
+#         return f"Студент: {self.name}: {a}"  # a[:-2]   ', '.join(map(str, self.marks))
+#
+#     def add_marks(self, mark):
+#         self.marks.append(mark)
+#
+#     def delete_mark(self, index):
+#         self.marks.pop(index)
+#
+#     def edit_mark(self, index, new_mark):
+#         self.marks[index] = new_mark
+#
+#     def average_mark(self):
+#         return round(sum(self.marks) / len(self.marks), 2)
+#
+#
+# class Group:
+#     def __init__(self, students, group):
+#         self.students = students
+#         self.group = group
+#
+#     def __str__(self):
+#         # a = ""
+#         # for i in self.students:
+#         #     a += str(i) + "\n"
+#         a = "\n".join(map(str, self.students))
+#         return f'Группа: {self.group}\n{a}'
+#
+#     def add_student(self, student):
+#         self.students.append(student)
+#
+#     def remove_student(self, index):
+#         return self.students.pop(index)
+#
+#     @staticmethod
+#     def change_group(group1, group2, index):
+#         return group2.add_student(group1.remove_student(index))
+#
+#
+# st1 = Student("Bodnya", [5, 4, 3, 4, 5, 3])
+# # print(st1)
+# # st1.add_marks(4)
+# # print(st1)
+# # st1.delete_mark(3)
+# # print(st1)
+# # st1.edit_mark(2, 4)
+# # print(st1)
+# # print(st1.average_mark())
+#
+# st2 = Student("Nikolaenko", [2, 3, 5, 4, 2])
+# st3 = Student("Birukov", [3, 5, 3, 2, 5, 4])
+# sts = [st1, st2]
+# my_group = Group(sts, "ГК Pyton")
+# # print(my_group)
+# # print()
+# my_group.add_student(st3)
+# # print(my_group)
+# # print()
+# my_group.remove_student(1)
+# print(my_group)
+# group22 = [st2]
+# print()
+# my_group2 = Group(group22, "ГК Web")
+# print(my_group2)
+# print()
+# Group.change_group(my_group, my_group2, 0)
+# print(my_group)
+# print()
+# print(my_group2)
