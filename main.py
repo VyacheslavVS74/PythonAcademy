@@ -6936,7 +6936,7 @@
 # #     data = json.load(fw)
 # #     print(data)
 #
-# json_string = json.dumps(data, ensure_ascii=False)  # ensure_ascii=False если надо на кириллице имя
+# json_string = json.dumps(data.__str__(), ensure_ascii=False)  # ensure_ascii=False если надо на кириллице имя
 #
 # data = json.loads(json_string)
 # print(data)
@@ -6989,45 +6989,45 @@
 # print(data)
 
 # --------------------------------------------------------- DZ
-import json
-from random import choice
-
-
-def get_person():
-    name = ""
-    tel = ""
-
-    letter = ["a", "b", "c", "d", "e", "f", "g", "h"]
-    nums = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
-
-    while len(name) != 7:
-        name += choice(letter)
-    # print(name)
-
-    while len(tel) != 10:
-        tel += choice(nums)
-    # print(tel)
-
-    person = {
-        "name": name,
-        "tel": tel
-    }
-    return person
-
-
-def write_json(person_dict):
-    try:
-        data = json.load(open("persons.json"))  # [{}]
-    except FileNotFoundError:
-        data = {}
-
-    data.append(person_dict)  # [{}, {}]
-    with open("persons.json", "w") as f:
-        json.dump(data, f, indent=2)  # [{}, {}]
-
-
-for i in range(5):
-    write_json(get_person())
+# import json
+# from random import choice
+#
+#
+# def get_person():
+#     name = ""
+#     tel = ""
+#
+#     letter = ["a", "b", "c", "d", "e", "f", "g", "h"]
+#     nums = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+#
+#     while len(name) != 7:
+#         name += choice(letter)
+#     # print(name)
+#
+#     while len(tel) != 10:
+#         tel += choice(nums)
+#     # print(tel)
+#
+#     person = {
+#         "name": name,
+#         "tel": tel
+#     }
+#     return person
+#
+#
+# def write_json(person_dict):
+#     try:
+#         data = json.load(open("persons.json"))  # [{}]
+#     except FileNotFoundError:
+#         data = []
+#
+#     data.append(person_dict)  # [{}, {}]
+#     with open("persons.json", "w") as f:
+#         json.dump(data, f, indent=2)  # [{}, {}]
+#
+#
+# for i in range(5):
+#     write_json(get_person())
 
 # ---------------------------------------------------------
 

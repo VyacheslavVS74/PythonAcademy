@@ -377,3 +377,6 @@
 # for i in range(6):
 #     print(" " * (6 - 1 - i) + "*" * (1 + i * 2))
 
+k = {"name":"Vlad","age":15}
+g = "name"
+print(k[g])
