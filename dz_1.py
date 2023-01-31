@@ -380,3 +380,16 @@
 k = {"name":"Vlad","age":15}
 g = "name"
 print(k[g])
+
+
+# import json
+# from random import choice
+# # # def get_person():
+#     name = '' #     tel = ''
+#     keys = ''
+# #     letter = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+#     nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+# #     while len(keys) != 10:
+#         keys += choice(nums)
+# #     while len(name) != 7:
+#         name += choice(letter) # #     while len(tel) != 10: #         tel += choice(nums) # #     person = { #         keys: { #             "name": name, #             "tel": tel #         } #     } #     return person # # # def write_json(person_dict): #     try: #         data = json.load(open("persons.json")) #     except FileNotFoundError: #         data = [] # #     data.append(person_dict) #     with open('persons.json', 'w') as f: #         json.dump(data, f, indent=2) # # # for i in range(5): #     write_json(get_person())
