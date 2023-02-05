@@ -19,7 +19,10 @@ class Country:
             data = json.load(open("country.json"))
         except FileNotFoundError:
             data = {}
-        data[reg.country] = reg.capital
+        if reg.country in data:
+            print("Указанная страна уже есть в базе данных.")
+        else:
+            data[reg.country] = reg.capital
         with open("country.json", "w") as f:
             json.dump(data, f)
 
