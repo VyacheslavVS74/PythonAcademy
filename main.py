@@ -7030,131 +7030,131 @@
 #     write_json(get_person())
 
 # ---------------------------------------------------------
-import json
-
-
-class Student:
-    def __init__(self, name, marks):
-        self.name = name
-        self.marks = marks
-
-    def __str__(self):
-        # a = ""
-        # for i in self.marks:
-        #     a += f'{i}, '
-        a = ", ".join(map(str, self.marks))
-        return f"Студент: {self.name}: {a}"  # a[:-2]   ', '.join(map(str, self.marks))
-
-    def add_marks(self, mark):
-        self.marks.append(mark)
-
-    def delete_mark(self, index):
-        self.marks.pop(index)
-
-    def edit_mark(self, index, new_mark):
-        self.marks[index] = new_mark
-
-    def average_mark(self):
-        return round(sum(self.marks) / len(self.marks), 2)
-
-    @staticmethod
-    def dump_to_json(stud, filename):
-        try:
-            data = json.load(open(filename))
-        except FileNotFoundError:
-            data = []
-
-        data.append({'name': stud.name, 'marks': stud.marks})
-        with open(filename, 'w') as f:
-            json.dump(data, f, indent=2)
-
-    @staticmethod
-    def load_to_file(filename):
-        with open(filename, 'r') as f:
-            print(json.load(f))
-
-
-class Group:
-    def __init__(self, students, group):
-        self.students = students
-        self.group = group
-
-    def __str__(self):
-        # a = ""
-        # for i in self.students:
-        #     a += str(i) + "\n"
-        a = "\n".join(map(str, self.students))
-        return f'Группа: {self.group}\n{a}'
-
-    def add_student(self, student):
-        self.students.append(student)
-
-    def remove_student(self, index):
-        return self.students.pop(index)
-
-    @staticmethod
-    def change_group(group1, group2, index):
-        return group2.add_student(group1.remove_student(index))
-
-    @staticmethod
-    def dump_group(file, group):
-        try:
-            data = json.load(open(file))
-        except FileNotFoundError:
-            data = []
-
-        with open(file, 'w') as f:
-            stud_list = []
-            for i in group.students:
-                stud_list.append([i.name, i.marks])
-            data.append(stud_list)
-            json.dump(data, f, indent=2)
-
-    @staticmethod
-    def upload_journal(file):
-        with open(file, 'r') as f:
-            print(json.load(f))
-
-
-st1 = Student("Bodnya", [5, 4, 3, 4, 5, 3])
-# Student.dump_to_json(st1, 'student.json')
-# Student.load_to_file('student.json')
-
-# print(st1)
-# st1.add_marks(4)
-# print(st1)
-# st1.delete_mark(3)
-# print(st1)
-# st1.edit_mark(2, 4)
-# print(st1)
-# print(st1.average_mark())
-
-st2 = Student("Nikolaenko", [2, 3, 5, 4, 2])
-# Student.dump_to_json(st2, 'student.json')
-# Student.load_to_file('student.json')
-
-st3 = Student("Birukov", [3, 5, 3, 2, 5, 4])
-sts = [st1, st2]
-my_group = Group(sts, "ГК Pyton")
+# import json
+#
+#
+# class Student:
+#     def __init__(self, name, marks):
+#         self.name = name
+#         self.marks = marks
+#
+#     def __str__(self):
+#         # a = ""
+#         # for i in self.marks:
+#         #     a += f'{i}, '
+#         a = ", ".join(map(str, self.marks))
+#         return f"Студент: {self.name}: {a}"  # a[:-2]   ', '.join(map(str, self.marks))
+#
+#     def add_marks(self, mark):
+#         self.marks.append(mark)
+#
+#     def delete_mark(self, index):
+#         self.marks.pop(index)
+#
+#     def edit_mark(self, index, new_mark):
+#         self.marks[index] = new_mark
+#
+#     def average_mark(self):
+#         return round(sum(self.marks) / len(self.marks), 2)
+#
+#     @staticmethod
+#     def dump_to_json(stud, filename):
+#         try:
+#             data = json.load(open(filename))
+#         except FileNotFoundError:
+#             data = []
+#
+#         data.append({'name': stud.name, 'marks': stud.marks})
+#         with open(filename, 'w') as f:
+#             json.dump(data, f, indent=2)
+#
+#     @staticmethod
+#     def load_to_file(filename):
+#         with open(filename, 'r') as f:
+#             print(json.load(f))
+#
+#
+# class Group:
+#     def __init__(self, students, group):
+#         self.students = students
+#         self.group = group
+#
+#     def __str__(self):
+#         # a = ""
+#         # for i in self.students:
+#         #     a += str(i) + "\n"
+#         a = "\n".join(map(str, self.students))
+#         return f'Группа: {self.group}\n{a}'
+#
+#     def add_student(self, student):
+#         self.students.append(student)
+#
+#     def remove_student(self, index):
+#         return self.students.pop(index)
+#
+#     @staticmethod
+#     def change_group(group1, group2, index):
+#         return group2.add_student(group1.remove_student(index))
+#
+#     @staticmethod
+#     def dump_group(file, group):
+#         try:
+#             data = json.load(open(file))
+#         except FileNotFoundError:
+#             data = []
+#
+#         with open(file, 'w') as f:
+#             stud_list = []
+#             for i in group.students:
+#                 stud_list.append([i.name, i.marks])
+#             data.append(stud_list)
+#             json.dump(data, f, indent=2)
+#
+#     @staticmethod
+#     def upload_journal(file):
+#         with open(file, 'r') as f:
+#             print(json.load(f))
+#
+#
+# st1 = Student("Bodnya", [5, 4, 3, 4, 5, 3])
+# # Student.dump_to_json(st1, 'student.json')
+# # Student.load_to_file('student.json')
+#
+# # print(st1)
+# # st1.add_marks(4)
+# # print(st1)
+# # st1.delete_mark(3)
+# # print(st1)
+# # st1.edit_mark(2, 4)
+# # print(st1)
+# # print(st1.average_mark())
+#
+# st2 = Student("Nikolaenko", [2, 3, 5, 4, 2])
+# # Student.dump_to_json(st2, 'student.json')
+# # Student.load_to_file('student.json')
+#
+# st3 = Student("Birukov", [3, 5, 3, 2, 5, 4])
+# sts = [st1, st2]
+# my_group = Group(sts, "ГК Pyton")
+# # # print(my_group)
+# # # print()
+# # my_group.add_student(st3)
+# # # print(my_group)
+# # # print()
+# # my_group.remove_student(1)
+# # print(my_group)
+# group22 = [st3]
+# # print()
+# my_group2 = Group(group22, "ГК Web")
+# Group.dump_group('group.json', my_group)
+# Group.dump_group('group.json', my_group2)
+# Group.upload_journal('group.json')
+# # print(my_group2)
+# # print()
+# # Group.change_group(my_group, my_group2, 0)
 # # print(my_group)
 # # print()
-# my_group.add_student(st3)
-# # print(my_group)
-# # print()
-# my_group.remove_student(1)
-# print(my_group)
-group22 = [st3]
-# print()
-my_group2 = Group(group22, "ГК Web")
-Group.dump_group('group.json', my_group)
-Group.dump_group('group.json', my_group2)
-Group.upload_journal('group.json')
-# print(my_group2)
-# print()
-# Group.change_group(my_group, my_group2, 0)
-# print(my_group)
-# print()
-# print(my_group2)
+# # print(my_group2)
 
 # 31.01.2023 =========================================================================
 
@@ -7219,8 +7219,8 @@ Group.upload_journal('group.json')
 # csv.DictWriter() {}
 
 # import csv
-
-# with open("data1.csv", "r", encoding="utf-8") as r_file:
+#
+# with open("data1.csv", "r") as r_file:
 #     file_reader = csv.reader(r_file, delimiter=";")
 #     print(type(file_reader))
 #     count = 0
@@ -7361,3 +7361,159 @@ Group.upload_journal('group.json')
 # row = soup.find("div", id="whois3").find_next_sibling()  # следуюший
 # row = soup.find("div", id="whois3").find_previous_sibling()  # предыдущий
 # print(row)
+
+# 07.02.2023 ==============================================================================
+
+# import requests
+#
+# r = requests.get("https://ru.wordpress.org/")
+# print(r.headers)
+# print(r.headers["Content-Type"])
+# print(r.content)
+# print(r.text)
+
+# import requests
+# from bs4 import BeautifulSoup
+#
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+#
+# def get_gata(html):
+#     soup = BeautifulSoup(html, "lxml")
+#     p1 = soup.find("header", id="masthead").find("p", class_="site-title").text
+#     return p1
+#
+#
+# def main():
+#     url = "https://ru.wordpress.org/"
+#     print(get_gata(get_html(url)))
+#
+#
+# if __name__ == "__main__":
+#     main()
+
+# import requests
+# from bs4 import BeautifulSoup
+# import re
+# import csv
+#
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+#
+# def refined(s):
+#     res = re.sub(r"\D+", "", s)
+#     return res
+#
+#
+# def write_csv(data):
+#     with open("plugins.csv", "a") as f:
+#         writer = csv.writer(f, delimiter=";")
+#         writer.writerow((data["name"], data["url"], data["rating"]))
+#
+#
+# def get_gata(html):
+#     soup = BeautifulSoup(html, "lxml")
+#     p1 = soup.find_all("section", class_="plugin-section")[3]
+#     plugins = p1.find_all("article")
+#     for plugin in plugins:
+#         name = plugin.find("h3").text
+#         url = plugin.find("h3").find("a").get("href")  #["href"]
+#         rating = plugin.find("span", class_="rating-count").find("a").text
+#         r = refined(rating)
+#         data = {"name": name, "url": url, "rating": r}
+#         # print(name)
+#         # print(url)
+#         # print(rating)
+#         # print(r)
+#         write_csv(data)
+#     # return len(plugins)
+#
+#
+# def main():
+#     url = "https://ru.wordpress.org/plugins/"
+#     get_gata(get_html(url))
+#
+#
+# if __name__ == "__main__":
+#     main()
+
+import requests
+from bs4 import BeautifulSoup
+import re
+import csv
+
+
+def get_html(url):
+    r = requests.get(url)
+    return r.text
+
+
+def refine_cy(s):
+    return s.split()[-1]
+
+
+def write_csv(data):
+    with open("plugins1.csv", "a") as f:
+        writer = csv.writer(f, lineterminator="\r", delimiter=";")
+        writer.writerow((data["name"],
+                         data["url"],
+                         data["snippet"],
+                         data["cy"]))
+
+
+def get_gata(html):
+    soup = BeautifulSoup(html, "lxml")
+    elements = soup.find_all("article", class_="plugin-card")
+    for el in elements:
+        try:
+            name = el.find("h3").text
+        except ValueError:
+            name = ""
+
+        try:
+            url = el.find("h3").find("a").get("href")
+        except ValueError:
+            url = "ValueError"
+
+        try:
+            snippet = el.find("div", class_="entry-excerpt").text.strip()
+        except ValueError:
+            snippet = ""
+
+        try:
+            c = el.find("span", class_="tested-with").text.strip()
+            cy = refine_cy(c)
+        except ValueError:
+            cy = ""
+
+        data = {
+            "name": name,
+            "url": url,
+            "snippet": snippet,
+            "cy": cy
+        }
+
+        write_csv(data)
+
+        # print(data)
+        # print(cy)
+        # print(snippet)
+        # print(url)
+        # print(name)
+    print(len(elements))
+
+
+def main():
+    for i in range(12, 13):
+        url = f"https://ru.wordpress.org/plugins/browse/blocks/page/{i}/"
+        get_gata(get_html(url))
+
+
+if __name__ == "__main__":
+    main()
