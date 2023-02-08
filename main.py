@@ -7479,7 +7479,7 @@ def get_gata(html):
         try:
             url = el.find("h3").find("a").get("href")
         except ValueError:
-            url = "ValueError"
+            url = ""
 
         try:
             snippet = el.find("div", class_="entry-excerpt").text.strip()
@@ -7505,7 +7505,7 @@ def get_gata(html):
         # print(cy)
         # print(snippet)
         # print(url)
-        # print(name)
+        print(name)
     print(len(elements))
 
 
