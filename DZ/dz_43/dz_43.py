@@ -10,16 +10,16 @@ def get_html(url):
 
 
 def refined(s):
-    res = re.sub(r"\D+", "", s)
+    res = re.sub(r"\D+", "", s)  # str(re.sub(r"\D+", "", s))
     return res
 
 
 def write_csv(data):
-    with open("product.csv", "a", encoding="utf-8") as f:
+    with open("product.csv", "a", errors="ignore") as f:  # если в строке юникод - errors="ignore"
         writer = csv.writer(f, delimiter=";")
         writer.writerow((data["name"],
-                         # data["price1"],
-                         data["code1"],
+                         data["price"],
+                         data["product-code"],
                          data["url"]))
 
 
@@ -33,12 +33,12 @@ def get_data(html):
             name = ""
 
         try:
-            price = i.find("span", class_="main").text
+            price = i.find("span", class_="main").text.strip()
             price1 = refined(price)
         except ValueError:
             price1 = ""
         try:
-            code = i.find("span", class_="code-value").text
+            code = i.find("span", class_="code-value").text.strip()
             # code1 = refined(code)
         except ValueError:
             code = ""
@@ -49,7 +49,7 @@ def get_data(html):
 
         data = {
             "name": name,
-            # "price": price1,
+            "price": price1,
             "product-code": code,
             "url": url
         }

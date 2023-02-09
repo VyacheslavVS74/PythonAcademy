@@ -3673,7 +3673,7 @@
 # * - от 0 до бесконечности
 # ? - 0 или 1
 
-# import re
+import re
 
 # s = "Я ищу совпадения в 2023 году. И я их найду в 2 счёта. 9875 19_4 5"
 # # reg = r'\A\w\s\w+\s\w+'  # w - Я
@@ -7443,77 +7443,77 @@
 # if __name__ == "__main__":
 #     main()
 
-import requests
-from bs4 import BeautifulSoup
-import re
-import csv
-
-
-def get_html(url):
-    r = requests.get(url)
-    return r.text
-
-
-def refine_cy(s):
-    return s.split()[-1]
-
-
-def write_csv(data):
-    with open("plugins1.csv", "a") as f:
-        writer = csv.writer(f, lineterminator="\r", delimiter=";")
-        writer.writerow((data["name"],
-                         data["url"],
-                         data["snippet"],
-                         data["cy"]))
-
-
-def get_gata(html):
-    soup = BeautifulSoup(html, "lxml")
-    elements = soup.find_all("article", class_="plugin-card")
-    for el in elements:
-        try:
-            name = el.find("h3").text
-        except ValueError:
-            name = ""
-
-        try:
-            url = el.find("h3").find("a").get("href")
-        except ValueError:
-            url = ""
-
-        try:
-            snippet = el.find("div", class_="entry-excerpt").text.strip()
-        except ValueError:
-            snippet = ""
-
-        try:
-            c = el.find("span", class_="tested-with").text.strip()
-            cy = refine_cy(c)
-        except ValueError:
-            cy = ""
-
-        data = {
-            "name": name,
-            "url": url,
-            "snippet": snippet,
-            "cy": cy
-        }
-
-        write_csv(data)
-
-        # print(data)
-        # print(cy)
-        # print(snippet)
-        # print(url)
-        print(name)
-    print(len(elements))
-
-
-def main():
-    for i in range(12, 13):
-        url = f"https://ru.wordpress.org/plugins/browse/blocks/page/{i}/"
-        get_gata(get_html(url))
-
-
-if __name__ == "__main__":
-    main()
+# import requests
+# from bs4 import BeautifulSoup
+# import re
+# import csv
+#
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+#
+# def refine_cy(s):
+#     return s.split()[-1]
+#
+#
+# def write_csv(data):
+#     with open("plugins1.csv", "a") as f:
+#         writer = csv.writer(f, lineterminator="\r", delimiter=";")
+#         writer.writerow((data["name"],
+#                          data["url"],
+#                          data["snippet"],
+#                          data["cy"]))
+#
+#
+# def get_gata(html):
+#     soup = BeautifulSoup(html, "lxml")
+#     elements = soup.find_all("article", class_="plugin-card")
+#     for el in elements:
+#         try:
+#             name = el.find("h3").text
+#         except ValueError:
+#             name = ""
+#
+#         try:
+#             url = el.find("h3").find("a").get("href")
+#         except ValueError:
+#             url = ""
+#
+#         try:
+#             snippet = el.find("div", class_="entry-excerpt").text.strip()
+#         except ValueError:
+#             snippet = ""
+#
+#         try:
+#             c = el.find("span", class_="tested-with").text.strip()
+#             cy = refine_cy(c)
+#         except ValueError:
+#             cy = ""
+#
+#         data = {
+#             "name": name,
+#             "url": url,
+#             "snippet": snippet,
+#             "cy": cy
+#         }
+#
+#         write_csv(data)
+#
+#         # print(data)
+#         # print(cy)
+#         # print(snippet)
+#         # print(url)
+#         print(name)
+#     print(len(elements))
+#
+#
+# def main():
+#     for i in range(12, 13):
+#         url = f"https://ru.wordpress.org/plugins/browse/blocks/page/{i}/"
+#         get_gata(get_html(url))
+#
+#
+# if __name__ == "__main__":
+#     main()
