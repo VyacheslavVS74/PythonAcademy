@@ -3,6 +3,14 @@ import requests
 import re
 import csv
 
+#  # с занятия на счет юникода
+#     for i in items:
+#         item = i.find("a", class_="fp-item fp-item--2").get("href")
+#         sort = i.find("div", class_="item").text.strip()
+#         urls = (f"www.garshinka.ru" + item)
+#         data = {'url': urls, 'sort': sort}
+#         write_csv(data)
+
 
 def get_html(url):
     r = requests.get(url)

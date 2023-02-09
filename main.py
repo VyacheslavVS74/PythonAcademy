@@ -3673,7 +3673,7 @@
 # * - от 0 до бесконечности
 # ? - 0 или 1
 
-import re
+# import re
 
 # s = "Я ищу совпадения в 2023 году. И я их найду в 2 счёта. 9875 19_4 5"
 # # reg = r'\A\w\s\w+\s\w+'  # w - Я
@@ -7517,3 +7517,23 @@ import re
 #
 # if __name__ == "__main__":
 #     main()
+
+# 09.02.2023 ================================================================================
+
+# def refine_snippet(s):
+#     res = [ord(c) for c in s if ord(c) < 9000]
+#     res1 = ''.join([chr(c) for c in res])    return res1
+
+# from parsers import Parsers
+#
+#
+# def main():
+#     pars = Parsers("https://www.ixbt.com/live/index/news/", "news.txt")
+#     pars.run()
+#
+#
+# if __name__ == '__main__':
+#     main()
+
+# MVC Model(модель) View(вид, представление) Controller(контроллер) ------------------------------
+
