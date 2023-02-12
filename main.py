@@ -7368,6 +7368,7 @@
 #
 # r = requests.get("https://ru.wordpress.org/")
 # print(r.headers)
+# print(r)
 # print(r.headers["Content-Type"])
 # print(r.content)
 # print(r.text)
@@ -7413,7 +7414,7 @@
 #
 # def write_csv(data):
 #     with open("plugins.csv", "a") as f:
-#         writer = csv.writer(f, delimiter=";")
+#         writer = csv.writer(f, delimiter=";", lineterminator="\r")
 #         writer.writerow((data["name"], data["url"], data["rating"]))
 #
 #
@@ -7421,9 +7422,10 @@
 #     soup = BeautifulSoup(html, "lxml")
 #     p1 = soup.find_all("section", class_="plugin-section")[3]
 #     plugins = p1.find_all("article")
+#
 #     for plugin in plugins:
 #         name = plugin.find("h3").text
-#         url = plugin.find("h3").find("a").get("href")  #["href"]
+#         url = plugin.find("h3").find("a").get("href")  # ["href"]
 #         rating = plugin.find("span", class_="rating-count").find("a").text
 #         r = refined(rating)
 #         data = {"name": name, "url": url, "rating": r}
@@ -7443,80 +7445,87 @@
 # if __name__ == "__main__":
 #     main()
 
-# import requests
-# from bs4 import BeautifulSoup
-# import re
-# import csv
-#
-#
-# def get_html(url):
-#     r = requests.get(url)
-#     return r.text
-#
-#
-# def refine_cy(s):
-#     return s.split()[-1]
-#
-#
-# def write_csv(data):
-#     with open("plugins1.csv", "a") as f:
-#         writer = csv.writer(f, lineterminator="\r", delimiter=";")
-#         writer.writerow((data["name"],
-#                          data["url"],
-#                          data["snippet"],
-#                          data["cy"]))
-#
-#
-# def get_gata(html):
-#     soup = BeautifulSoup(html, "lxml")
-#     elements = soup.find_all("article", class_="plugin-card")
-#     for el in elements:
-#         try:
-#             name = el.find("h3").text
-#         except ValueError:
-#             name = ""
-#
-#         try:
-#             url = el.find("h3").find("a").get("href")
-#         except ValueError:
-#             url = ""
-#
-#         try:
-#             snippet = el.find("div", class_="entry-excerpt").text.strip()
-#         except ValueError:
-#             snippet = ""
-#
-#         try:
-#             c = el.find("span", class_="tested-with").text.strip()
-#             cy = refine_cy(c)
-#         except ValueError:
-#             cy = ""
-#
-#         data = {
-#             "name": name,
-#             "url": url,
-#             "snippet": snippet,
-#             "cy": cy
-#         }
-#
-#         write_csv(data)
-#
-#         # print(data)
-#         # print(cy)
-#         # print(snippet)
-#         # print(url)
-#         print(name)
-#     print(len(elements))
-#
-#
-# def main():
-#     for i in range(12, 13):
-#         url = f"https://ru.wordpress.org/plugins/browse/blocks/page/{i}/"
-#         get_gata(get_html(url))
-#
-#
-# if __name__ == "__main__":
-#     main()
+import requests
+from bs4 import BeautifulSoup
+import re
+import csv
+
+
+def get_html(url):
+    r = requests.get(url)
+    return r.text
+
+
+def refine_cy(s):
+    return s.split()[-1]
+
+
+def refine_snippet(s):
+    res = [ord(c) for c in s if ord(c) < 9000]
+    res1 = ''.join([chr(c) for c in res])
+    return res1
+
+
+def write_csv(data):
+    with open("plugins1.csv", "a", encoding="utf-8-sig") as f:
+        writer = csv.writer(f, lineterminator="\r", delimiter=";")
+        writer.writerow((data["name"],
+                         data["url"],
+                         data["snippet"],
+                         data["cy"]))
+
+
+def get_gata(html):
+    soup = BeautifulSoup(html, "lxml")
+    elements = soup.find_all("article", class_="plugin-card")
+    # print(len(elements))
+    for el in elements:
+        try:
+            name = el.find("h3").text
+        except ValueError:
+            name = ""
+
+        try:
+            url = el.find("h3").find("a").get("href")
+        except ValueError:
+            url = ""
+
+        try:
+            snippet = el.find("div", class_="entry-excerpt").text.strip()
+            snippet1 = refine_snippet(snippet)
+        except ValueError:
+            snippet1 = ""
+
+        try:
+            c = el.find("span", class_="tested-with").text.strip()
+            cy = refine_cy(c)
+        except ValueError:
+            cy = ""
+
+        data = {
+            "name": name,
+            "url": url,
+            "snippet": snippet1,
+            "cy": cy
+        }
+
+        write_csv(data)
+
+        # print(data)
+        # print(cy)
+        # print(snippet1)
+        # print(url)
+        # print(name)
+
+
+def main():
+    for i in range(0, 25):
+        url = f"https://ru.wordpress.org/plugins/browse/blocks/page/{i}/"
+        get_gata(get_html(url))
+
+
+if __name__ == "__main__":
+    main()
 
 # 09.02.2023 ================================================================================
 
@@ -7536,4 +7545,3 @@
 #     main()
 
 # MVC Model(модель) View(вид, представление) Controller(контроллер) ------------------------------
-
