@@ -7545,3 +7545,41 @@
 #     main()
 
 # MVC Model(модель) View(вид, представление) Controller(контроллер) ------------------------------
+
+
+# 14.02.2023 ====================================================================================
+
+# Базы данных ----------------------
+
+# SQL - язык структурированных запросов
+
+# Реляционная база данных состоит из:
+# Столбцы (поля, атрибуты)
+# Строки (записи, кортежи)
+
+# SQLite
+# *.bd, *.db3, *.sqlite, *.sqlite3
+
+import sqlite3 as sq
+
+# con = sq.connect("profile.db")
+# cur = con.cursor()
+#
+# cur.execute("""
+# """)
+#
+# con.close()
+
+with sq.connect("profile.db") as con:
+    cur = con.cursor()
+    # cur.execute("""CREATE TABLE IF NOT EXISTS users(
+    # id INTEGER PRIMARY KEY AUTOINCREMENT,
+    # name TEXT NOT NULL,
+    # summa REAL,
+    # data BLOB
+    # )""")
+
+    cur.execute("DROP TABLE users")
+
+# SELECT [ALL|DISTINCT] {*| столбец1[,cстолбец2] }
+# FROM таблица [, таблица2]
