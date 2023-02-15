@@ -1,5 +1,6 @@
 
 def add_title(title):
+    """Декорирующая функция класса UserInterface"""
     def wrapper(func):
         def wrap(*args, **kwargs):
             print(title.center(50, "="))
