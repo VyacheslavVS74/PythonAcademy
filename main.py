@@ -7560,26 +7560,58 @@
 # SQLite
 # *.bd, *.db3, *.sqlite, *.sqlite3
 
+# import sqlite3 as sq
+#
+# # con = sq.connect("profile.db")
+# # cur = con.cursor()
+# #
+# # cur.execute("""
+# # """)
+# #
+# # con.close()
+#
+# with sq.connect("profile.db") as con:
+#     cur = con.cursor()
+#     # cur.execute("""CREATE TABLE IF NOT EXISTS users(
+#     # id INTEGER PRIMARY KEY AUTOINCREMENT,
+#     # name TEXT NOT NULL,
+#     # summa REAL,
+#     # data BLOB
+#     # )""")
+#
+#     cur.execute("DROP TABLE users")
+#
+# # SELECT [ALL|DISTINCT] {*| столбец1[,cстолбец2] }
+# # FROM таблица [, таблица2]
+
+
+# 16.02.2023 =====================================================================
+
+# WHERE условие
+#       =, ==, <>, !=, >, >=, <, <=
+#       выражение [NOT] BETWEEN начальное значение AND конечное значение
+#       выражение [NOT] LIKE шаблон строки
+#           % - любое количество символов
+#           _ - один символ
+#       выражение [NOT] GlOB регулярное выражение
+#           * - любое количество символов
+#           ? - один символ
+#           . - любой одиночный символ
+#           [abc] - один из заданных символов
+#           [a-z0-9] - диапозон заданнных символов
+#           ^ - [^abc] - все кроме заданных симмволов
+#       выражение IS [NOT] NULL
+#       выражение [NOT] IN (набор значений)
+
+# ORDER BY имя поля [ASC|DESC]
+
 import sqlite3 as sq
 
-# con = sq.connect("profile.db")
-# cur = con.cursor()
-#
-# cur.execute("""
-# """)
-#
-# con.close()
-
-with sq.connect("profile.db") as con:
+with sq.connect("users.db") as con:
     cur = con.cursor()
-    # cur.execute("""CREATE TABLE IF NOT EXISTS users(
-    # id INTEGER PRIMARY KEY AUTOINCREMENT,
-    # name TEXT NOT NULL,
-    # summa REAL,
-    # data BLOB
-    # )""")
-
-    cur.execute("DROP TABLE users")
-
-# SELECT [ALL|DISTINCT] {*| столбец1[,cстолбец2] }
-# FROM таблица [, таблица2]
+    cur.execute("""CREATE TABLE IF NOT EXISTS person(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    phone BLOB NOT NULL DEFAULT "+79090000000",
+    age INTEGER NOT NULL CHECK(age>15 AND age<70)
+    )""")
