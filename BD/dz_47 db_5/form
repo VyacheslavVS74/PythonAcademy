@@ -1,0 +1,15 @@
+SELECT Seller.Seller, SallerGoods.Goods
+FROM Seller, SallerGoods
+WHERE Seller.INNSeller=SallerGoods.INNSeller;
+
+SELECT s.Seller, sg.Goods
+FROM Seller s, SallerGoods sg
+WHERE s.INNSeller=sg.INNSeller;
+
+SELECT c.Client, s.Seller
+FROM Seller s, SallerGoods sg, ClientGoods cg, Client c
+WHERE s.INNSeller=sg.INNSeller AND sg.ID=cg.ID AND c.INNClient=cg.INNClient;
+
+SELECT s.Seller, sg.DateStart
+FROM Seller s, SallerGoods sg
+WHERE s.INNSeller=sg.INNSeller AND sg.DateStart BETWEEN "2007-11-10" and "2007-11-11";
