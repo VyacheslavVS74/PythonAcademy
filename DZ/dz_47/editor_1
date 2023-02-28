@@ -1,0 +1,59 @@
+SELECT c.Client, s.Seller
+FROM Seller s, SallerGoods sg, ClientGoods cg, Client c
+WHERE s.INNSeller=sg.INNSeller AND sg.ID=cg.ID AND c.INNClient=cg.INNClient;
+
+SELECT sg.Goods, sg.CostUnit, sg.Count, s.Seller
+FROM Seller s, SallerGoods sg
+WHERE s.INNSeller=sg.INNSeller
+ORDER BY Goods;
+
+/*4*/
+SELECT c.Client, s.Status
+From Seller s, SallerGoods sg, ClientGoods cg, Client c
+WHERE s.INNSeller=sg.INNSeller AND sg.ID=cg.ID AND c.INNClient=cg.INNClient AND s.Status LIKE "посредник";
+
+/*5*/
+SELECT sg.Goods, s.Status
+From Seller s, SallerGoods sg
+WHERE s.INNSeller=sg.INNSeller AND Status LIKE "производитель";
+
+/*7 and 6*/
+SELECT c.Client, sg.Goods, sg.CostUnit*cg.Count
+FROM SallerGoods sg, ClientGoods cg, Client c
+WHERE sg.ID=cg.ID AND c.INNClient=cg.INNClient;
+
+/*8*/
+SELECT c.Client, c.Status, sg.Goods
+FROM SallerGoods sg, ClientGoods cg, Client c
+WHERE sg.ID=cg.ID AND c.INNClient=cg.INNClient AND c.Status LIKE "кафе";
+
+/*9*/
+SELECT sg.Goods, s.Status
+FROM SallerGoods sg, Seller s
+WHERE s.INNSeller=sg.INNSeller AND s.Status LIKE "посредник";
+
+/*10*/
+SELECT sg.Goods, (cg.CostUnit-sg.CostUnit)*cg.Count
+FROM SallerGoods sg, ClientGoods cg
+WHERE sg.ID=cg.ID;
+
+/*11*/
+SELECT c.Client, sg.Goods
+From SallerGoods sg, ClientGoods cg, Client c
+WHERE sg.ID=cg.ID AND cg.INNClient=c.INNClient AND Goods NOT LIKE "масло подсолнечное";
+
+/*13*/
+SELECT sg.Code, sg.Goods, s.Status
+From SallerGoods sg, Seller s
+WHERE s.INNSeller=sg.INNSeller AND s.Status LIKE "посредник";
+
+/*14*/
+SELECT c.Client, cg.CostUnit-sg.CostUnit
+From SallerGoods sg, ClientGoods cg, Client c
+WHERE sg.ID=cg.ID AND cg.INNClient=c.INNClient AND sg.Goods LIKE "Перец черный молотый";
+
+/*15*/
+SELECT sg.Goods, s.Status, c.Status
+FROM Seller s, SallerGoods sg, ClientGoods cg, Client c
+WHERE s.INNSeller=sg.INNSeller AND sg.ID=cg.ID AND c.INNClient=cg.INNClient AND s.Status LIKE "производитель" AND c.Status LIKE "кафе"
+ORDER BY sg.Goods DESC;
