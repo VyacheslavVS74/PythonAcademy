@@ -1,4 +1,4 @@
-# from jinja2 import Template
+from jinja2 import Template
 
 # Шаблонизатор (Jinja)
 # pip install Jinja2
@@ -103,9 +103,9 @@
 # ]
 #
 # # tp1 = "Суммарная цена автомобилей {{ cs | sum(attribute='price') }}"
-# # tp1 = "Суммарная цена автомобилей {{ (cs | max(attribute='price')).model }}"
+# tp1 = "Модель с наивысшей ценой {{ (cs | max(attribute='price')).model }}"
 # # tp1 = "{{ cs | random }}"
-# tp1 = "{{ cs | replace('model', 'brand') }}"
+# # tp1 = "{{ cs | replace('model', 'brand') }}"
 #
 # # lst = [1, 2, 3, 4, 5, 6]
 # # tp1 = "Суммарная цена автомобилей {{ cs | sum }}"  # msg = tm.render(cs=lst)
@@ -185,23 +185,6 @@
 # msg = tm.render(users=persons)
 # print(msg)
 
-# from jinja2 import Environment, FileSystemLoader
-#
-# persons = [{"name": "Алексей", "year": 18, "weight": 78.5},
-#            {"name": "Никита", "year": 28, "weight": 82.3},
-#            {"name": "Виталий", "year": 33, "weight": 94.0}
-# ]
-#
-# file_loader = FileSystemLoader("templates")
-# env = Environment(loader=file_loader)
-#
-# tm = env.get_template('main.html')
-# msg = tm.render(users=persons, title='About Jinja')
-#
-# print(msg)
-
-# {% include <путь> %}
-
 from jinja2 import Environment, FileSystemLoader
 
 persons = [{"name": "Алексей", "year": 18, "weight": 78.5},
@@ -209,12 +192,29 @@ persons = [{"name": "Алексей", "year": 18, "weight": 78.5},
            {"name": "Виталий", "year": 33, "weight": 94.0}
 ]
 
-subs = ['Культура', 'Наука', 'Политика', 'Спорт']
-
 file_loader = FileSystemLoader("templates")
 env = Environment(loader=file_loader)
 
-tm = env.get_template('about.html')
-msg = tm.render(list_table=subs)
+tm = env.get_template('main.html')
+msg = tm.render(users=persons, title='About Jinja')
 
 print(msg)
+
+# {% include <путь к файлу шаблона> %}
+
+# from jinja2 import Environment, FileSystemLoader
+#
+# persons = [{"name": "Алексей", "year": 18, "weight": 78.5},
+#            {"name": "Никита", "year": 28, "weight": 82.3},
+#            {"name": "Виталий", "year": 33, "weight": 94.0}
+# ]
+#
+# subs = ['Культура', 'Наука', 'Политика', 'Спорт']
+#
+# file_loader = FileSystemLoader("templates")
+# env = Environment(loader=file_loader)
+#
+# tm = env.get_template('about.html')
+# msg = tm.render(list_table=subs)
+#
+# print(msg)
