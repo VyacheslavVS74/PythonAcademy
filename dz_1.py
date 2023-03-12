@@ -381,6 +381,7 @@
 # g = "name"
 # print(k[g])
 
-
-a = {"a": 2, "b": 3}
-print(a["b"])
+a = input()
+b = input()
+if -32000 <= int(a) <= 32000 and -32000 <= int(a) <= 32000:
+    print(a + b)
