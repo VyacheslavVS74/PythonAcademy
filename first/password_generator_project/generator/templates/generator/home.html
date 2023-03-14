@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h1>Генератор паролей</h1>
+  <form action="{% url 'password' %}">
+      <select name="length">
+          <option value="1">Значение 1</option>
+          <option value="2">Значение 2</option>
+          <option value="3">Значение 3</option>
+      </select>
+      <input type="submit" value="Сгенерировать пароль">
+  </form>
+</body>
+</html>
