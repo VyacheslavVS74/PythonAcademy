@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+{{ super() }}
+<h1>Pricing</h1>
+<ul>
+    {% for i in posts %}
+    <li class="sp_well">
+        <p class="title">
+            <a href="{{ url_for('show_well', id_well=i.id) }}">{{ i.title }}</a>
+        </p>
+        <p class="announce">{{ i.price }} руб/мес</p>
+        <p class="txt">{{ i.text[:300] }}...</p>
+        <div><input type="submit" value="Купить" class="button"></div>
+    </li>
+    
+    {% endfor %}
+</ul>
+{% endblock %}
