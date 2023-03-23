@@ -13,8 +13,34 @@ body{
 }
 
 .container form, .container h2{
-    background: greenyellow;
+    background: #9AC9C0;
     padding: 20px;
     box-sizing: border-box;
     border-radius: 6px;
 }
+
+.container h2{
+    text-align: center;
+}
+
+.container input{
+    background-color: #E6FBFA;
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 14px;
+    padding: 8px 10px;
+}
+
+.descrip{
+    margin: 10px 0;
+    text-align: center;
+}
+
+.button{
+    background-color: #E6FBFA;
+    font-size: 16px;
+    padding: 10px 25px;
+    border-radius: 4px;
+    display: inline-block;
+}
+

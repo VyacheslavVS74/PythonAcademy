@@ -8,24 +8,29 @@
 </head>
 <body>
 <div class="container">
-  <h1>Генератор паролей</h1>
-  <form action="{% url 'password' %}">
-      <p><select name="length">
-          {% for i in lst %}
-          {% if i == 12 %}
-          <option value="{{ i }}" selected>{{ i }}</option>
-          {% else %}
-          <option value="{{ i }}">{{ i }}</option>
-          {% endif %}
-          {% endfor %}
-      </select> Количество символов</p>
-      <p>
-          <input type="checkbox" name="uppercase"> Верхний регистр <br>
-          <input type="checkbox" name="numbers"> Цифры <br>
-          <input type="checkbox" name="special"> Спецсимволы <br>
-      </p>
-      <input type="submit" value="Сгенерировать пароль">
-  </form>
+    <h1>Генератор паролей</h1>
+    <form action="{% url 'password' %}">
+        <p>
+            <select name="length">
+                {% for i in lst %}
+                {% if i == 12 %}
+                <option value="{{ i }}" selected>{{ i }}</option>
+                {% else %}
+                <option value="{{ i }}">{{ i }}</option>
+                {% endif %}
+                {% endfor %}
+            </select> Количество символов
+        </p>
+        <p>
+            <label><input type="checkbox" name="uppercase"> Верхний регистр</label> <br>
+            <label><input type="checkbox" name="numbers"> Цифры</label> <br>
+            <label><input type="checkbox" name="special"> Спецсимволы</label> <br>
+        </p>
+        <input type="submit" value="Сгенерировать пароль">
+    </form>
 </div>
+<form action="{% url 'description' %}" class="descrip">
+    <input type="submit" value="перейти к описанию" class="button">
+</form>
 </body>
 </html>
