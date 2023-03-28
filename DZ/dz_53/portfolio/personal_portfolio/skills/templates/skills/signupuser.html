@@ -1,0 +1,15 @@
+{% extends 'skills/base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Регистрация:</h1>
+
+<form action="" method="post" class="register">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p>
+    <small>{{ error }}</small>
+    </p>
+    <button class="btn">Зарегистрироваться</button>
+</form>
+{% endblock %}
