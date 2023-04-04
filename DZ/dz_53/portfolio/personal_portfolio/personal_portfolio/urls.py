@@ -26,7 +26,8 @@ urlpatterns = [
     path('signup/', views.signupuser, name='signupuser'),
     path('login/', views.loginuser, name='loginuser'),
     path('logout/', views.logoutuser, name='logoutuser'),
-    # path('<int:work_id>/', views.work, name='work'),
+    # path('', views.work_all, name='work_all'),
+    path('<int:work_id>/', views.work, name='work'),
     path('blog/', include('blog.urls')),
 ]
 
