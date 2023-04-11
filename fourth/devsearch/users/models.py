@@ -16,7 +16,7 @@ class Profile(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.name}'
+        return f'{self.username}'
 
 
 class Skill(models.Model):
@@ -27,3 +27,5 @@ class Skill(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+
+
