@@ -2,11 +2,12 @@ from django.shortcuts import render, redirect
 from .models import Project, Tag
 from .forms import ProjectForm
 from django.contrib.auth.decorators import login_required
+from .utils import search_projects
 
 
 def projects(request):
-    pr = Project.objects.all()
-    context = {'projects': pr}
+    pr, search_query = search_projects(request)
+    context = {'projects': pr, 'search_query': search_query}
     return render(request, 'projects/projects.html', context)
 
 
