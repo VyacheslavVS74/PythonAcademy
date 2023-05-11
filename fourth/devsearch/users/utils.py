@@ -6,7 +6,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 def paginate_profiles(request, profiles, results):
     page = request.GET.get('page', 1)
     # results = 6
-    paginator = Paginator(profiles, results, allow_empty_first_page=False)
+    paginator = Paginator(profiles, results, allow_empty_first_page=True)
 
     # try:
     #     pr = paginator.page(page)

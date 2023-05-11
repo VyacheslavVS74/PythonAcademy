@@ -3,7 +3,7 @@
   <ul class="container">
     {% if queryset.has_previous %}
     <li><a href="?page={{queryset.previous_page_number}}" class="btn page-link"
-        data-page="queryset.previous_page_number">&lt; Prev</a></li>
+        data-page="{{queryset.previous_page_number}}">&lt; Prev</a></li>
     {% endif %}
 
     {% for page in custom_range %}
@@ -15,7 +15,7 @@
     {% endfor %}
 
     {% if queryset.has_next %}
-    <li><a href="?page={{queryset.next_page_number}}" class="btn page-link" data-page="queryset.next_page_number">Next
+    <li><a href="?page={{queryset.next_page_number}}" class="btn page-link" data-page="{{queryset.next_page_number}}">Next
         &gt;</a></li>
     {% endif %}
   </ul>
