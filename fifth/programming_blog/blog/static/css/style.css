@@ -34,6 +34,7 @@ a:hover {
     align-items: center;
     font-size: 20px;
     font-weight: bold;
+    justify-content: space-between;
 }
 .logo {
     flex-basis: 40%;
@@ -41,6 +42,7 @@ a:hover {
 .last {
     flex-basis: 30%;
     text-align: right;
+    color: #81d4fa;
 }
 
 
@@ -131,4 +133,36 @@ form label{
 .page_num {
     margin: 6px;
     font-weight: bold;
+}
+/* -------------------auth-------------- */
+
+input, textarea {
+    width: 100%;
+    margin-top: 6px;
+    padding: 6px;
+    box-sizing: border-box;
+}
+label {
+    font-style: 20px;
+}
+#id_is_published {
+    width: 20px;
+    height: 20px;
+}
+#id_cat {
+    font-style: 20px;
+    padding: 4px;
+}
+.last a {
+    display: inline;
+}
+.logout h2 {
+    margin-bottom: 40px;
+}
+.logout a {
+    color: #264b5d;
+    background: #81d4fa;
+    font-style: 20px;
+    font-weight: bold;
+    padding: 20px 86px;
 }
