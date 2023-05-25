@@ -1,0 +1,168 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #264b5d;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.content .wrap {
+    background: #fff;
+    padding: 40px;
+    box-sizing: border-box;
+    display: flex;
+}
+ul {
+    list-style: none;
+}
+a {
+    color: #81d4fa;
+    text-decoration: none;
+    padding: 20px;
+}
+a:hover {
+    color: #ffc;
+}
+.header {
+    background: #121212;
+    padding: 20px;
+}
+.main_menu {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    justify-content: space-between;
+}
+.logo {
+    flex-basis: 40%;
+}
+.last {
+    flex-basis: 30%;
+    text-align: right;
+    color: #81d4fa;
+}
+
+
+.sidebar ul {
+    width: 320px;
+    margin-right: 40px;
+}
+.sidebar a {
+    padding: 20px;
+    display: block;
+    border: 1px solid #fff;
+    background: #264b5d;
+    font-weight: bold;
+    font-size: 18px;
+}
+.selected {
+    font-size: 18px;
+    padding: 20px;
+    border: 1px solid #fff;
+    font-weight: bold;
+    background: #81d4fa;
+}
+.main li {
+    border: 1px solid #264b5d;
+    margin-bottom: 40px;    
+}
+.first, .date {
+    padding: 10px 20px;
+    background: #264b5d;
+    font-size: 18px;
+    color: #fff;
+    margin: 0;
+}
+.image {
+    float: left;
+    margin-right: 20px;
+    max-width: 50%;
+}
+.photo {
+    max-width: 100%;
+}
+.text {
+    padding: 20px 20px 0;
+}
+.text a {
+    padding-left: 0;
+}
+.text a:hover {
+    color: #264b5d;
+}
+.post h1 {
+    margin-top: 0;
+}
+.post {
+    font-size: 16px;
+}
+.form_input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+button {
+    background: #264b5d;
+    color: #fff;
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+}
+form label{
+    font-size: 18px;
+}
+.list_pages {
+    display: flex;
+    justify-content: center;
+}
+.list_pages .page_num_selected {
+    background: #81d4fa;
+    padding: 20px;
+}
+.list_pages a {
+    background: #264b5d;
+    padding: 20px;
+    display: block;
+    color: #fff;
+}
+.page_num {
+    margin: 6px;
+    font-weight: bold;
+}
+/* -------------------auth-------------- */
+
+input, textarea {
+    width: 100%;
+    margin-top: 6px;
+    padding: 6px;
+    box-sizing: border-box;
+}
+label {
+    font-style: 20px;
+}
+#id_is_published {
+    width: 20px;
+    height: 20px;
+}
+#id_cat {
+    font-style: 20px;
+    padding: 4px;
+}
+.last a {
+    display: inline;
+}
+.logout h2 {
+    margin-bottom: 40px;
+}
+.logout a {
+    color: #264b5d;
+    background: #81d4fa;
+    font-style: 20px;
+    font-weight: bold;
+    padding: 20px 86px;
+}
