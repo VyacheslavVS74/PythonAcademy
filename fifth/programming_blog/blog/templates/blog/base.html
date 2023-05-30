@@ -50,8 +50,10 @@
                 </ul>
             </div>
             <div class="main">
+
                 {% block content %}
                 {% endblock %}
+                
                 {% if page_obj.has_other_pages %}
                     <div>
                         <ul class="list_pages">
